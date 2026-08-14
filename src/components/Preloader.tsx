@@ -105,7 +105,7 @@ export function Preloader() {
                 transition={{ delay: 0.9, duration: 0.5, y: { delay: 1.4, duration: 3, repeat: Infinity, ease: "easeInOut" } }}
                 className="absolute -top-12 -right-8 sm:-right-12 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-[#16a34a] z-20"
               >
-                <HeartPulse size={18} strokeWidth={2.5} />
+                <HeartPulse width={18} height={18} strokeWidth={2.5} />
               </motion.div>
 
               {/* 2. Leaf (Bottom Right) */}
@@ -115,7 +115,7 @@ export function Preloader() {
                 transition={{ delay: 1.0, duration: 0.5, y: { delay: 1.5, duration: 3, repeat: Infinity, ease: "easeInOut" } }}
                 className="absolute -bottom-10 -right-6 sm:-right-8 w-8 h-8 bg-white rounded-full shadow-md flex items-center justify-center text-[#16a34a] z-20"
               >
-                <Leaf size={16} strokeWidth={2.5} />
+                <Leaf width={16} height={16} strokeWidth={2.5} />
               </motion.div>
 
               {/* 3. Medical Plus (Top Left) */}
@@ -125,7 +125,7 @@ export function Preloader() {
                 transition={{ delay: 1.1, duration: 0.5, y: { delay: 1.6, duration: 3, repeat: Infinity, ease: "easeInOut" } }}
                 className="absolute -top-8 -left-8 sm:-left-12 w-9 h-9 bg-white rounded-full shadow-md flex items-center justify-center text-[#0284c7] z-20"
               >
-                <Plus size={18} strokeWidth={3} />
+                <Plus width={18} height={18} strokeWidth={3} />
               </motion.div>
 
               {/* 4. Family/Baby (Bottom Left) */}
@@ -135,15 +135,15 @@ export function Preloader() {
                 transition={{ delay: 1.2, duration: 0.5, y: { delay: 1.7, duration: 3, repeat: Infinity, ease: "easeInOut" } }}
                 className="absolute -bottom-12 -left-4 sm:-left-6 w-11 h-11 bg-white rounded-full shadow-md flex items-center justify-center text-[#0284c7] z-20"
               >
-                <Baby size={20} strokeWidth={2.5} />
+                <Baby width={20} height={20} strokeWidth={2.5} />
               </motion.div>
 
               {/* Main Logo Image */}
               <motion.div
                 initial={{ opacity: 0, scale: 0.75, filter: "blur(4px)" }}
                 animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ scale: 1.05 }}
-                transition={{ duration: 0.8, ease: "easeOut", exit: { duration: 0.5 } }}
+                exit={{ scale: 1.05, transition: { duration: 0.5 } }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
                 className="relative z-30 w-full h-full"
               >
                 <Image
@@ -206,7 +206,7 @@ export function Preloader() {
                 transition={{ delay: 2.2, type: "spring", stiffness: 300, damping: 15 }}
                 className="absolute top-1 right-1 text-pink-400"
               >
-                <Heart size={14} fill="currentColor" />
+                <Heart width={14} height={14} fill="currentColor" />
               </motion.div>
             </div>
 
