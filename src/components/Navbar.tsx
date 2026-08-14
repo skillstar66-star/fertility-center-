@@ -64,7 +64,15 @@ export function Navbar() {
             )}
           >
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
+            <Link 
+              href="/" 
+              className={cn(
+                "flex items-center gap-2 group transition-all duration-300",
+                isScrolled 
+                  ? "bg-white/60 backdrop-blur-md px-4 py-2 rounded-full md:bg-transparent md:backdrop-blur-none md:px-0 md:py-0 md:rounded-none" 
+                  : "px-0 py-0"
+              )}
+            >
               <Image 
                 src="/logo.png" 
                 alt="Kovai Health Center Logo" 
