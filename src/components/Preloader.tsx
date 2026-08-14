@@ -33,7 +33,7 @@ export function Preloader() {
       {isLoading && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gradient-to-b from-white to-emerald-50 overflow-hidden"
+          className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-gradient-to-b from-white to-emerald-50 overflow-hidden"
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ 
@@ -78,7 +78,7 @@ export function Preloader() {
             ))}
           </div>
 
-          <div className="relative flex flex-col items-center z-10 w-full max-w-sm px-6">
+          <div className="flex flex-col items-center justify-center w-full max-w-sm relative z-10 px-6 mt-12 sm:mt-8">
             
             {/* Logo Container */}
             <div className="relative w-full aspect-[3/1] max-w-[200px] sm:max-w-[240px] flex items-center justify-center mb-10">
@@ -157,7 +157,7 @@ export function Preloader() {
             </div>
 
             {/* Minimal Mother & Baby Line Art SVG */}
-            <div className="relative mb-10 flex justify-center items-center h-20 w-20">
+            <div className="relative mb-4 flex justify-center items-center h-20 w-20 mt-4">
               <svg width="70" height="70" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
                 {/* Mother's Head */}
                 <motion.circle 
@@ -215,7 +215,7 @@ export function Preloader() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 2.4, duration: 0.8, ease: "easeOut" }}
-              className="text-center mb-8"
+              className="text-center"
             >
               <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-800">
                 Better Health. <span className="text-[#16a34a]">Brighter Lives.</span>
