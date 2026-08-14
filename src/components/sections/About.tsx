@@ -127,7 +127,7 @@ export function About() {
                 alt="About Kovai Health Center" 
                 width={800} 
                 height={800} 
-                className="w-full h-auto object-contain"
+                className="w-full h-auto object-contain rounded-[32px]"
                 priority
               />
             </div>
