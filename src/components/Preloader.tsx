@@ -222,38 +222,7 @@ export function Preloader() {
               </h2>
             </motion.div>
 
-            {/* Loading Bar & Text */}
-            <div className="w-full sm:w-[80%] flex flex-col items-center">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2.5, duration: 0.5 }}
-                className="w-full h-1.5 bg-slate-200 rounded-full overflow-hidden relative mb-3"
-              >
-                <motion.div 
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ delay: 2.6, duration: 1.4, ease: "easeInOut" }}
-                  className="h-full bg-gradient-to-r from-brand-cyan to-brand-primary rounded-full relative"
-                >
-                  <motion.div 
-                    initial={{ x: "-100%" }}
-                    animate={{ x: "200%" }}
-                    transition={{ delay: 2.8, duration: 1.2, ease: "linear" }}
-                    className="absolute top-0 bottom-0 w-1/3 bg-white/40 blur-[2px]"
-                  />
-                </motion.div>
-              </motion.div>
-              
-              <motion.span
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 2.5, duration: 0.5 }}
-                className="text-xs sm:text-sm font-medium text-slate-500"
-              >
-                Preparing your experience...
-              </motion.span>
-            </div>
+
 
           </div>
         </motion.div>
