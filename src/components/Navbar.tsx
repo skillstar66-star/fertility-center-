@@ -57,10 +57,10 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto">
           <nav
             className={cn(
-              "flex items-center justify-between rounded-full md:px-6 py-3 transition-all duration-300",
+              "flex items-center justify-between md:rounded-full md:px-6 py-3 transition-all duration-300",
               isScrolled
                 ? "md:bg-white/60 md:backdrop-blur-md md:border md:border-white/50 md:shadow-lg md:shadow-blue-900/5"
-                : "bg-transparent border border-transparent"
+                : "bg-transparent md:border md:border-transparent"
             )}
           >
             {/* Logo */}
