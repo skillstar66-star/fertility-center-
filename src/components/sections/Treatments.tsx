@@ -133,7 +133,7 @@ export function Treatments() {
             Specialized Care for Your Health Concerns
           </h2>
           <p className="text-base sm:text-lg text-slate-800 font-bold sm:font-semibold leading-relaxed">
-            Personalized, confidential treatments across our 6 specialized departments — combining 30 years of clinical experience with <span className="text-emerald-900 font-black bg-emerald-100 px-2.5 py-0.5 rounded-lg border border-emerald-300 shadow-xs inline-block">authentic Ayurvedic & Unani care</span>.
+            Personalized, confidential treatments across our 6 specialized departments — combining 30 years of clinical experience with <span className="text-emerald-900 font-black bg-emerald-100 px-2.5 py-0.5 rounded-lg border border-emerald-300 shadow-xs inline-block">Authentic Ayurvedic & Unani Care</span>.
           </p>
         </div>
 

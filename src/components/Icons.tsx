@@ -214,6 +214,10 @@ export const ChevronRight = ({ gradient, className, size, width, height, ...prop
   <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><polyline points="9 18 15 12 9 6"></polyline></svg>
 );
 
+export const ChevronDown = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><polyline points="6 9 12 15 18 9"></polyline></svg>
+);
+
 export const UserCheck = ({ gradient, className, size, width, height, ...props }: IconProps) => (
   <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><polyline points="16 11 18 13 22 9"></polyline></svg>
 );
