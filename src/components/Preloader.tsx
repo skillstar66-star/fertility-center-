@@ -147,10 +147,11 @@ export function Preloader() {
                 className="relative z-30 w-full h-full"
               >
                 <Image
-                  src="/logo.png"
+                  src="/logo.png?v=2"
                   alt="Kovai Health Center Logo"
                   fill
                   className="object-contain"
+                  unoptimized
                   priority
                 />
               </motion.div>

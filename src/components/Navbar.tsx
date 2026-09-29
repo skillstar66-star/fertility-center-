@@ -76,11 +76,13 @@ export function Navbar() {
               )}
             >
               <Image 
-                src="/logo.png" 
+                src="/logo.png?v=2" 
                 alt="Kovai Health Center Logo" 
-                width={150} 
-                height={40} 
-                className="object-contain h-8 sm:h-10 w-auto"
+                width={180} 
+                height={50} 
+                className="object-contain h-9 sm:h-11 w-auto"
+                unoptimized
+                priority
               />
             </Link>
 

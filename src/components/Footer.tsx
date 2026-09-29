@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Leaf, Phone, Mail, MapPin } from "@/components/Icons";
 
 export function Footer() {
@@ -8,13 +9,17 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-y-10 gap-x-6 lg:gap-8 mb-16">
           {/* Brand - 4 cols */}
           <div className="sm:col-span-2 lg:col-span-4">
-            <Link href="/" className="flex items-center gap-2.5 mb-5">
-              <div className="bg-brand-primary/20 p-2 rounded-xl text-brand-cyan border border-brand-primary/30">
-                <Leaf className="w-6 h-6" />
+            <Link href="/" className="inline-block mb-5 group">
+              <div className="bg-white/95 rounded-2xl px-3.5 py-2 inline-flex items-center shadow-md border border-white/20 group-hover:bg-white group-hover:scale-105 transition-all duration-300">
+                <Image 
+                  src="/logo.png?v=2" 
+                  alt="Kovai Health Center Logo" 
+                  width={180} 
+                  height={50} 
+                  className="h-10 sm:h-11 w-auto object-contain"
+                  unoptimized
+                />
               </div>
-              <span className="font-extrabold text-2xl text-white tracking-tight">
-                Kovai Health Center
-              </span>
             </Link>
             <p className="text-slate-400 mb-6 max-w-sm text-base leading-relaxed">
               &ldquo;Personalized care. Trusted experience. Better wellbeing.&rdquo;
