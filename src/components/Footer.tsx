@@ -58,12 +58,12 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Column 1 on Mobile: Clinic Links (1 col mobile / 2 cols desktop) */}
+          {/* Column 1 on Mobile: Clinic (1 col mobile / 2 cols desktop) */}
           <div className="col-span-1 lg:col-span-2">
-            <h3 className="text-white font-bold text-xs sm:text-base mb-3 sm:mb-5 tracking-wide">
+            <h3 className="text-white font-bold text-xs sm:text-base mb-2.5 sm:mb-5 tracking-wide">
               Clinic
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-1.5 sm:space-y-3">
               {[
                 { name: 'About Us', href: '/about' },
                 { name: 'Doctors', href: '/#doctors' },
@@ -82,10 +82,10 @@ export function Footer() {
 
           {/* Column 2 on Mobile: Treatments (1 col mobile / 2 cols desktop) */}
           <div className="col-span-1 lg:col-span-2">
-            <h3 className="text-white font-bold text-xs sm:text-base mb-3 sm:mb-5 tracking-wide">
+            <h3 className="text-white font-bold text-xs sm:text-base mb-2.5 sm:mb-5 tracking-wide">
               Treatments
             </h3>
-            <ul className="space-y-2 sm:space-y-3">
+            <ul className="space-y-1.5 sm:space-y-3">
               {[
                 { name: 'Male Care', href: '/treatments/low-sperm-count' },
                 { name: 'Female Care', href: '/treatments/pcos-pcod' },
@@ -102,58 +102,58 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 3 on Mobile: Contact Info (1 col mobile / 4 cols desktop) */}
+          {/* Column 3 on Mobile: Contact with Full Mail ID (1 col mobile / 4 cols desktop) */}
           <div className="col-span-1 lg:col-span-4">
-            <h3 className="text-white font-bold text-xs sm:text-base mb-3 sm:mb-5 tracking-wide flex items-center gap-1.5">
+            <h3 className="text-white font-bold text-xs sm:text-base mb-2.5 sm:mb-5 tracking-wide flex items-center gap-1.5">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
               Contact
             </h3>
 
-            <div className="space-y-3 sm:space-y-4">
+            <div className="space-y-2.5 sm:space-y-4">
               {/* Address */}
               <div className="flex items-start gap-1.5 sm:gap-3 group">
-                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0">
-                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-md sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                  <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
-                <div className="text-[11px] sm:text-sm text-slate-300 leading-snug">
-                  <p className="font-semibold text-white">Gandhipuram</p>
-                  <p className="text-slate-400">Coimbatore - 641018</p>
+                <div className="text-[10px] sm:text-sm text-slate-300 leading-tight">
+                  <p className="font-bold text-white text-[11px] sm:text-sm">Gandhipuram</p>
+                  <p className="text-slate-400 text-[9.5px] sm:text-xs">CBE - 641018</p>
                 </div>
               </div>
 
               {/* Phone Numbers */}
               <div className="flex items-start gap-1.5 sm:gap-3 group">
-                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0">
-                  <Phone className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-md sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                  <Phone className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
-                <div className="text-[11px] sm:text-sm flex flex-col space-y-0.5">
+                <div className="text-[10px] sm:text-sm flex flex-col space-y-0.5 leading-tight">
                   <a 
                     href="tel:+919385405040" 
-                    className="font-semibold text-white hover:text-brand-cyan transition-colors"
+                    className="font-bold text-white hover:text-emerald-400 transition-colors text-[10px] sm:text-sm"
                   >
                     93854 05040
                   </a>
                   <a 
                     href="tel:+918300591849" 
-                    className="text-slate-400 hover:text-brand-cyan transition-colors"
+                    className="font-bold text-slate-300 hover:text-emerald-400 transition-colors text-[10px] sm:text-sm"
                   >
                     83005 91849
                   </a>
                 </div>
               </div>
 
-              {/* Email */}
-              <div className="flex items-center gap-1.5 sm:gap-3 group">
-                <div className="w-7 h-7 sm:w-9 sm:h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0">
-                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              {/* Email Address - Full Mail ID clearly displayed */}
+              <div className="flex items-start gap-1.5 sm:gap-3 group">
+                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-md sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+                  <Mail className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
-                <div className="text-[11px] sm:text-sm">
+                <div className="text-[10px] sm:text-sm leading-tight min-w-0">
                   <a 
                     href="mailto:kovaihealthcenter@gmail.com" 
-                    className="text-slate-400 hover:text-white transition-colors truncate block max-w-[90px] sm:max-w-none"
+                    className="font-bold text-white hover:text-emerald-400 transition-colors break-all text-[9px] sm:text-sm block"
                     title="kovaihealthcenter@gmail.com"
                   >
-                    Email Us
+                    kovaihealthcenter<wbr />@gmail.com
                   </a>
                 </div>
               </div>
