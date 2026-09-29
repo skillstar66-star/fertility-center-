@@ -26,7 +26,7 @@ export function About() {
             </div>
 
             {/* Title */}
-            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0f172a] leading-[1.18] tracking-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-black text-[#0f172a] leading-[1.18] tracking-tight mb-6">
               WELCOME TO KOVAI HEALTH CENTER
             </h2>
 
@@ -36,26 +36,26 @@ export function About() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50/50 to-blue-50/30 border-l-4 border-blue-600 shadow-[0_4px_20px_rgba(37,99,235,0.08)] mb-6"
+              className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50/70 to-blue-50/50 border-l-4 border-blue-600 shadow-md mb-6"
             >
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 mt-0.5">
+                <div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/30 mt-0.5">
                   <Leaf className="w-5 h-5" />
                 </div>
-                <p className="text-base sm:text-lg lg:text-xl font-bold text-blue-700 leading-snug">
+                <p className="text-base sm:text-lg lg:text-xl font-black text-blue-900 leading-snug">
                   Provide personalized care using modern Ayurvedic and Unani approaches alongside natural, herb-based treatments.
                 </p>
               </div>
             </motion.div>
 
             {/* Supporting Content */}
-            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/80 border border-slate-100 mb-8">
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-100/90 border border-slate-200/80 mb-8">
               <div className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-0.5 shadow-sm">
                   <Users className="w-5 h-5" />
                 </div>
-                <p className="text-slate-600 font-medium text-sm sm:text-base leading-relaxed">
-                  Having supported <strong className="text-[#0f172a] font-bold">10,000+ couples and individuals</strong>, we remain committed to creating a comfortable, confidential, and judgment-free environment where people can openly discuss their concerns and take informed steps towards better health and wellbeing.
+                <p className="text-slate-900 font-bold text-sm sm:text-base leading-relaxed">
+                  Having supported <strong className="text-emerald-800 font-black">10,000+ couples and individuals</strong>, we remain committed to creating a comfortable, confidential, and judgment-free environment where people can openly discuss their concerns and take informed steps towards better health and wellbeing.
                 </p>
               </div>
             </div>

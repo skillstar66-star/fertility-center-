@@ -104,22 +104,22 @@ export function Doctors() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 font-bold text-sm tracking-wide mb-6">
-            <Users className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-900 font-black text-sm tracking-wide mb-6 border border-blue-200">
+            <Users className="w-4 h-4 text-blue-700" />
             OUR EXPERTS
           </div>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#0f172a] mb-6 leading-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-[#0f172a] mb-6 leading-tight">
             Meet Our Experienced<br/>
             <span className="text-blue-600">Healthcare Team</span>
           </h2>
-          <div className="w-16 h-1 bg-blue-500 rounded-full mx-auto mb-6" />
-          <p className="text-lg text-slate-600 font-medium">
+          <div className="w-16 h-1.5 bg-blue-600 rounded-full mx-auto mb-6" />
+          <p className="text-lg sm:text-xl text-slate-800 font-bold">
             Dedicated professionals committed to providing personalized and confidential care.
           </p>
         </div>
 
         {/* Swipe Indication for Mobile */}
-        <div className="flex md:hidden items-center justify-center gap-2 text-slate-500 text-sm mb-6 animate-pulse">
+        <div className="flex md:hidden items-center justify-center gap-2 text-slate-700 font-bold text-sm mb-6 animate-pulse">
           <span>Swipe to see more</span>
           <ArrowRight className="w-4 h-4" />
         </div>
@@ -135,14 +135,14 @@ export function Doctors() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: idx * 0.1 }}
-                className={`flex flex-col rounded-[32px] border ${styles.card} overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 relative bg-white shrink-0 w-[85vw] sm:w-[320px] md:w-auto snap-center`}
+                className={`flex flex-col rounded-[32px] border-2 ${styles.card} overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 relative bg-white shrink-0 w-[85vw] sm:w-[320px] md:w-auto snap-center`}
               >
                 {/* Top badges */}
                 <div className="flex justify-between items-center p-6 pb-0 mb-4">
-                  <div className={`w-14 h-12 rounded-2xl flex items-center justify-center font-bold text-xl ${styles.badgeBg} ${styles.badgeText}`}>
+                  <div className={`w-14 h-12 rounded-2xl flex items-center justify-center font-black text-xl ${styles.badgeBg} ${styles.badgeText} shadow-xs`}>
                     {doc.initials}
                   </div>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-white border border-slate-100 shadow-sm ${styles.iconColor}`}>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-white border border-slate-200 shadow-sm ${styles.iconColor}`}>
                     <ShieldCheck className="w-5 h-5" />
                   </div>
                 </div>
@@ -164,19 +164,22 @@ export function Doctors() {
                 {/* Content */}
                 <div className="px-6 text-center flex-1 flex flex-col relative z-10 group/text mb-6">
                   <motion.h3 
-                    className="text-2xl font-bold text-[#0f172a] mb-2 transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-cyan-500"
+                    className="text-2xl font-black text-[#0f172a] mb-2 transition-colors duration-300 group-hover:text-blue-600"
                     whileHover={{ scale: 1.05 }}
                     transition={{ type: "spring", stiffness: 400, damping: 10 }}
                   >
                     {doc.name}
                   </motion.h3>
-                  <p className={`font-bold text-base ${styles.qualText} transition-transform duration-300 group-hover:-translate-y-0.5`}>
+                  <p className={`font-black text-base ${styles.qualText} transition-transform duration-300 group-hover:-translate-y-0.5 mb-2`}>
                     {doc.qualification}
+                  </p>
+                  <p className="font-bold text-sm text-slate-800">
+                    {doc.specialty}
                   </p>
                 </div>
                 
                 {/* View Profile Button */}
-                <Link href={`/doctors/${doc.slug}`} className={`w-full py-5 flex items-center justify-center gap-2 font-bold transition-colors ${styles.btnBg} ${styles.btnText}`}>
+                <Link href={`/doctors/${doc.slug}`} className={`w-full py-5 flex items-center justify-center gap-2 font-black transition-colors ${styles.btnBg} ${styles.btnText}`}>
                   View Profile
                   <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -191,51 +194,51 @@ export function Doctors() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-white rounded-[24px] sm:rounded-[32px] p-4 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 grid grid-cols-2 gap-y-6 gap-x-2 lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-6"
+          className="bg-white rounded-[24px] sm:rounded-[32px] p-4 sm:p-8 shadow-md border border-slate-200 grid grid-cols-2 gap-y-6 gap-x-2 lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-6"
         >
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 border border-blue-200">
               <ShieldCheck className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-blue-600 mb-1 text-[13px] sm:text-base leading-tight break-words">Verified Experts</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Experienced & certified professionals.</p>
+              <h4 className="font-black text-blue-700 mb-1 text-[13px] sm:text-base leading-tight break-words">Verified Experts</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Experienced & certified professionals.</p>
             </div>
           </div>
           
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
+          <div className="hidden lg:block w-px h-12 bg-slate-200" />
           
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
               <Lock className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-emerald-600 mb-1 text-[13px] sm:text-base leading-tight break-words">100% Confidential</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Your privacy is our priority.</p>
+              <h4 className="font-black text-emerald-700 mb-1 text-[13px] sm:text-base leading-tight break-words">100% Confidential</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Your privacy is our priority.</p>
             </div>
           </div>
           
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
+          <div className="hidden lg:block w-px h-12 bg-slate-200" />
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 border border-purple-200">
               <Users className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-purple-600 mb-1 text-[13px] sm:text-base leading-tight break-words">Personalized Care</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Tailored treatments for you.</p>
+              <h4 className="font-black text-purple-700 mb-1 text-[13px] sm:text-base leading-tight break-words">Personalized Care</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Tailored treatments for you.</p>
             </div>
           </div>
 
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
+          <div className="hidden lg:block w-px h-12 bg-slate-200" />
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-pink-100 text-pink-700 flex items-center justify-center shrink-0 border border-pink-200">
               <HeartHandshake className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-pink-600 mb-1 text-[13px] sm:text-base leading-tight break-words">Compassionate Support</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">We're with you every step.</p>
+              <h4 className="font-black text-pink-700 mb-1 text-[13px] sm:text-base leading-tight break-words">Compassionate Support</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">We're with you every step.</p>
             </div>
           </div>
         </motion.div>

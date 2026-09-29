@@ -125,15 +125,15 @@ export function Treatments() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs sm:text-sm tracking-wide mb-4">
-            <Sparkles className="w-4 h-4 text-emerald-600" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-100 text-emerald-900 font-black text-xs sm:text-sm tracking-wide mb-4 border border-emerald-300">
+            <Sparkles className="w-4 h-4 text-emerald-700" />
             OUR CLINICAL DEPARTMENTS & SERVICES
           </div>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0f172a] mb-5 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0f172a] mb-5 tracking-tight">
             Specialized Care for Your Health Concerns
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
-            Personalized, confidential treatments across our 6 specialized departments — combining 30 years of clinical experience with <span className="text-brand-primary font-bold bg-emerald-50/80 px-2.5 py-0.5 rounded-lg border border-emerald-200/60 shadow-xs inline-block">authentic Ayurvedic & Unani care</span>.
+          <p className="text-base sm:text-lg text-slate-800 font-bold sm:font-semibold leading-relaxed">
+            Personalized, confidential treatments across our 6 specialized departments — combining 30 years of clinical experience with <span className="text-emerald-900 font-black bg-emerald-100 px-2.5 py-0.5 rounded-lg border border-emerald-300 shadow-xs inline-block">authentic Ayurvedic & Unani care</span>.
           </p>
         </div>
 
@@ -141,10 +141,10 @@ export function Treatments() {
         <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
           <button
             onClick={() => setActiveTab("all")}
-            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-black transition-all duration-300 ${
               activeTab === "all"
                 ? "bg-[#0f172a] text-white shadow-md scale-105"
-                : "bg-white text-slate-600 border border-slate-200 hover:border-brand-primary hover:text-brand-primary"
+                : "bg-white text-slate-800 border-2 border-slate-300 hover:border-brand-primary hover:text-brand-primary"
             }`}
           >
             All Departments (6)
@@ -153,10 +153,10 @@ export function Treatments() {
             <button
               key={dept.id}
               onClick={() => setActiveTab(dept.id)}
-              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
                 activeTab === dept.id
                   ? "bg-brand-primary text-white shadow-md scale-105"
-                  : "bg-white text-slate-600 border border-slate-200 hover:border-brand-primary hover:text-brand-primary"
+                  : "bg-white text-slate-800 border-2 border-slate-200 hover:border-brand-primary hover:text-brand-primary"
               }`}
             >
               {dept.name}
@@ -175,59 +175,59 @@ export function Treatments() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
-                className="bg-white rounded-[28px] p-6 sm:p-8 border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between group"
+                className="bg-white rounded-[28px] p-6 sm:p-8 border-2 border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Department Tag & Number */}
                   <div className="flex items-center justify-between mb-4">
-                    <span className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${dept.bgLight} ${dept.textColor} border ${dept.borderColor}`}>
+                    <span className={`text-[11px] font-black uppercase tracking-wider px-3 py-1 rounded-full ${dept.bgLight} ${dept.textColor} border ${dept.borderColor}`}>
                       {dept.tag}
                     </span>
-                    <span className="text-xs font-bold text-slate-300">0{departments.findIndex(d => d.id === dept.id) + 1}</span>
+                    <span className="text-xs font-black text-slate-400">0{departments.findIndex(d => d.id === dept.id) + 1}</span>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#0f172a] mb-2.5 group-hover:text-brand-primary transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] mb-2.5 group-hover:text-brand-primary transition-colors">
                     {dept.name}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed mb-6">
+                  <p className="text-xs sm:text-sm text-slate-700 font-bold leading-relaxed mb-6">
                     {dept.desc}
                   </p>
 
                   {/* Services List */}
                   <div className="space-y-2 mb-6">
-                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Services Covered:</div>
+                    <div className="text-[11px] font-black text-slate-500 uppercase tracking-wider mb-2">Services Covered:</div>
                     {dept.services.map((service, sIdx) => (
                       <Link
                         key={sIdx}
                         href={`/treatments/${service.slug}`}
-                        className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 hover:bg-emerald-50/60 border border-slate-100 hover:border-emerald-200 transition-all group/item"
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-300 transition-all group/item shadow-xs"
                       >
                         <div className="flex items-center gap-2.5 min-w-0">
-                          <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center text-slate-600 group-hover/item:text-emerald-600 shadow-xs shrink-0">
+                          <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center text-slate-800 group-hover/item:text-emerald-700 shadow-xs shrink-0 font-bold">
                             {service.icon}
                           </div>
-                          <span className="text-xs sm:text-sm font-semibold text-slate-700 group-hover/item:text-emerald-800 truncate">
+                          <span className="text-xs sm:text-sm font-bold text-slate-900 group-hover/item:text-emerald-950 truncate">
                             {service.name}
                           </span>
                         </div>
-                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover/item:text-emerald-600 group-hover/item:translate-x-1 transition-transform shrink-0" />
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-500 group-hover/item:text-emerald-700 group-hover/item:translate-x-1 transition-transform shrink-0" />
                       </Link>
                     ))}
                   </div>
                 </div>
 
                 {/* Footer Action */}
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
                   <Link
                     href="#consultation"
-                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold ${dept.textColor} hover:underline`}
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-black ${dept.textColor} hover:underline`}
                   >
                     Book Consultation <ArrowRight className="w-3.5 h-3.5" />
                   </Link>
-                  <span className="text-xs font-semibold text-slate-400">
+                  <span className="text-xs font-bold text-slate-500">
                     {dept.services.length} {dept.services.length === 1 ? 'Service' : 'Services'}
                   </span>
                 </div>
@@ -242,45 +242,45 @@ export function Treatments() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-14 bg-white rounded-[24px] p-6 sm:p-8 shadow-sm border border-slate-100 grid grid-cols-2 lg:grid-cols-4 gap-6"
+          className="mt-14 bg-white rounded-[24px] p-6 sm:p-8 shadow-md border border-slate-200 grid grid-cols-2 lg:grid-cols-4 gap-6"
         >
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+            <div className="w-12 h-12 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 border border-blue-200">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm">100% Confidential</h4>
-              <p className="text-slate-500 text-xs">Complete privacy & judgment-free care</p>
+              <h4 className="font-black text-slate-900 text-sm">100% Confidential</h4>
+              <p className="text-slate-700 text-xs font-bold">Complete privacy & judgment-free</p>
             </div>
           </div>
           
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-200">
               <Stethoscope className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm">30 Years Experience</h4>
-              <p className="text-slate-500 text-xs">Second-generation certified doctors</p>
+              <h4 className="font-black text-slate-900 text-sm">30 Years Experience</h4>
+              <p className="text-slate-700 text-xs font-bold">Second-generation certified doctors</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 border border-purple-100">
+            <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 border border-purple-200">
               <Activity className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm">Personalized Care</h4>
-              <p className="text-slate-500 text-xs">Ayurvedic & Unani herb-based therapies</p>
+              <h4 className="font-black text-slate-900 text-sm">Personalized Care</h4>
+              <p className="text-slate-700 text-xs font-bold">Ayurvedic & Unani herb therapies</p>
             </div>
           </div>
 
           <div className="flex items-center gap-3.5">
-            <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 border border-orange-100">
+            <div className="w-12 h-12 rounded-2xl bg-orange-100 text-orange-700 flex items-center justify-center shrink-0 border border-orange-200">
               <Users className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm">10,000+ Patients</h4>
-              <p className="text-slate-500 text-xs">Trusted by couples & individuals</p>
+              <h4 className="font-black text-slate-900 text-sm">10,000+ Patients</h4>
+              <p className="text-slate-700 text-xs font-bold">Trusted by couples & individuals</p>
             </div>
           </div>
         </motion.div>

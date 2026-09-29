@@ -83,22 +83,22 @@ export function Process() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 text-blue-600 font-bold text-sm tracking-wide mb-6">
-            <Sparkles className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-900 font-black text-sm tracking-wide mb-6 border border-blue-200">
+            <Sparkles className="w-4 h-4 text-blue-700" />
             OUR PROCESS
           </div>
-          <h2 className="text-4xl sm:text-[3.25rem] font-bold text-[#0f172a] mb-6 leading-tight">
-            Simple<span className="text-blue-500">.</span> Private<span className="text-blue-500">.</span> Personalized<span className="text-blue-500">.</span>
+          <h2 className="text-4xl sm:text-[3.25rem] font-black text-[#0f172a] mb-6 leading-tight">
+            Simple<span className="text-blue-600">.</span> Private<span className="text-blue-600">.</span> Personalized<span className="text-blue-600">.</span>
           </h2>
-          <p className="text-lg text-slate-600 font-medium">
-            Your journey to better health in <span className="text-blue-500">four simple steps.</span>
+          <p className="text-lg sm:text-xl text-slate-800 font-bold">
+            Your journey to better health in <span className="text-blue-600 font-black">four simple steps.</span>
           </p>
         </div>
 
         {/* Steps Grid */}
         <div className="relative mb-16">
           {/* Dotted connecting line for desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[2px] border-t-2 border-dashed border-slate-200 -z-10 -translate-y-1/2" />
+          <div className="hidden lg:block absolute top-1/2 left-0 w-full h-[2px] border-t-2 border-dashed border-slate-300 -z-10 -translate-y-1/2" />
           
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 lg:gap-10">
             {steps.map((step, idx) => (
@@ -112,17 +112,17 @@ export function Process() {
               >
                 {/* Connecting Arrow (Desktop) */}
                 {idx < 3 && (
-                  <div className="hidden lg:flex absolute top-1/2 -right-8 w-6 h-6 bg-white rounded-full items-center justify-center text-blue-400 z-10 -translate-y-1/2 shadow-sm border border-slate-100">
+                  <div className="hidden lg:flex absolute top-1/2 -right-8 w-6 h-6 bg-white rounded-full items-center justify-center text-blue-600 z-10 -translate-y-1/2 shadow-sm border border-slate-200 font-black">
                     <ArrowRight className="w-3 h-3" />
                   </div>
                 )}
                 
                 {/* Number Badge */}
-                <div className={`absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 w-6 h-6 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white font-bold text-xs sm:text-base shadow-lg z-20 ${getColorClass(step.color, 'bg')}`}>
+                <div className={`absolute -top-3 sm:-top-4 left-1/2 -translate-x-1/2 w-7 h-7 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-white font-black text-xs sm:text-base shadow-lg z-20 ${getColorClass(step.color, 'bg')}`}>
                   {step.num}
                 </div>
 
-                <div className="bg-white rounded-[24px] sm:rounded-[32px] p-3 sm:p-8 pt-8 sm:pt-12 text-center h-full shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
+                <div className="bg-white rounded-[24px] sm:rounded-[32px] p-3 sm:p-8 pt-8 sm:pt-12 text-center h-full shadow-[0_8px_30px_rgba(0,0,0,0.06)] border-2 border-slate-100 relative overflow-hidden group hover:-translate-y-2 transition-transform duration-300">
                   
                   {/* Icon Circle */}
                   <div className={`w-14 h-14 sm:w-24 sm:h-24 mx-auto rounded-full bg-gradient-to-br flex items-center justify-center mb-3 sm:mb-6 relative ${getColorClass(step.color, 'gradient')} ${getColorClass(step.color, 'text')}`}>
@@ -131,13 +131,13 @@ export function Process() {
                     <div className={`absolute bottom-4 left-2 w-1.5 h-1.5 rounded-full ${getColorClass(step.color, 'bg')}`} />
                     <div className={`absolute top-1/2 -right-1 w-2 h-2 rounded-full ${getColorClass(step.color, 'bg')} opacity-50`} />
                     
-                    <div className="scale-75 sm:scale-100">
+                    <div className="scale-75 sm:scale-100 font-bold">
                       {step.icon}
                     </div>
                   </div>
 
-                  <h3 className="font-bold text-[#0f172a] text-[13px] sm:text-lg mb-1 sm:mb-3 leading-tight">{step.title}</h3>
-                  <p className="text-slate-500 text-[10px] sm:text-sm leading-snug sm:leading-relaxed mb-4 sm:mb-6">
+                  <h3 className="font-black text-[#0f172a] text-sm sm:text-xl mb-1.5 sm:mb-3 leading-tight">{step.title}</h3>
+                  <p className="text-slate-700 text-xs sm:text-sm font-bold leading-relaxed mb-4 sm:mb-6">
                     {step.desc}
                   </p>
 
@@ -155,51 +155,51 @@ export function Process() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="bg-white rounded-[24px] sm:rounded-[32px] p-4 sm:p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-slate-100 grid grid-cols-2 gap-y-6 gap-x-2 lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-6"
+          className="bg-white rounded-[24px] sm:rounded-[32px] p-4 sm:p-8 shadow-md border border-slate-200 grid grid-cols-2 gap-y-6 gap-x-2 lg:flex lg:flex-row lg:items-center lg:justify-between lg:gap-6"
         >
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 border border-blue-200">
               <ShieldCheck className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-blue-600 mb-1 text-[13px] sm:text-base leading-tight break-words">100% Confidential</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Your privacy is our top priority.</p>
+              <h4 className="font-black text-blue-700 mb-1 text-[13px] sm:text-base leading-tight break-words">100% Confidential</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Your privacy is our top priority.</p>
             </div>
           </div>
           
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
+          <div className="hidden lg:block w-px h-12 bg-slate-200" />
           
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-teal-50 text-teal-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-teal-100 text-teal-700 flex items-center justify-center shrink-0 border border-teal-200">
               <Lock className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-teal-600 mb-1 text-[13px] sm:text-base leading-tight break-words">Trusted Specialists</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Experienced & certified doctors.</p>
+              <h4 className="font-black text-teal-700 mb-1 text-[13px] sm:text-base leading-tight break-words">Trusted Specialists</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Experienced & certified doctors.</p>
             </div>
           </div>
           
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
+          <div className="hidden lg:block w-px h-12 bg-slate-200" />
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0 border border-purple-200">
               <Users className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-purple-600 mb-1 text-[13px] sm:text-base leading-tight break-words">Personalized Care</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Tailored treatments just for you.</p>
+              <h4 className="font-black text-purple-700 mb-1 text-[13px] sm:text-base leading-tight break-words">Personalized Care</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Tailored treatments just for you.</p>
             </div>
           </div>
 
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
+          <div className="hidden lg:block w-px h-12 bg-slate-200" />
 
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-2 sm:gap-4 w-full lg:w-auto">
-            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-pink-50 text-pink-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-2xl bg-pink-100 text-pink-700 flex items-center justify-center shrink-0 border border-pink-200">
               <HeartHandshake className="w-5 h-5 sm:w-7 sm:h-7" />
             </div>
             <div className="flex-1 min-w-0">
-              <h4 className="font-bold text-pink-600 mb-1 text-[13px] sm:text-base leading-tight break-words">Here for You</h4>
-              <p className="text-slate-500 text-[11px] sm:text-sm leading-tight">Support at every step.</p>
+              <h4 className="font-black text-pink-700 mb-1 text-[13px] sm:text-base leading-tight break-words">Here for You</h4>
+              <p className="text-slate-700 font-bold text-[11px] sm:text-sm leading-tight">Support at every step.</p>
             </div>
           </div>
         </motion.div>
