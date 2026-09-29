@@ -11,15 +11,6 @@ export function FloatingWhatsApp() {
       transition={{ delay: 1, duration: 0.5, type: "spring" }}
       className="fixed bottom-6 right-6 z-50 hidden md:flex flex-col items-end gap-3 pointer-events-none"
     >
-      {/* Tooltip */}
-      <motion.div 
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 2, duration: 0.5 }}
-        className="bg-white px-4 py-2 rounded-2xl shadow-[0_8px_30px_rgba(0,0,0,0.12)] border border-slate-100 pointer-events-auto origin-right"
-      >
-        <span className="text-sm font-semibold text-slate-700">Need help? <span className="text-emerald-600">Chat with us</span> 👋</span>
-      </motion.div>
 
       {/* Button */}
       <Link 

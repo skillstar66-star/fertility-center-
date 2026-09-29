@@ -9,7 +9,8 @@ export function Doctors() {
   const doctors = [
     {
       name: "Dr Jalaludheen.",
-      initials: "DAJ",
+      slug: "dr-jalaludheen",
+      initials: "DJ",
       qualification: "BAMS, PhD",
       experience: "22+ Years Experience",
       specialty: "Chief Physician - Sexual Wellness & Fertility",
@@ -18,20 +19,22 @@ export function Doctors() {
     },
     {
       name: "Dr Sijahudheen.",
+      slug: "dr-sijahudheen",
       initials: "DS",
       qualification: "BAMS",
       experience: "18+ Years Experience",
-      specialty: "Ayurvedic Healthcare",
+      specialty: "Ayurvedic Healthcare Specialist",
       theme: "dark-blue",
       img: "/image copy 3.png",
       featured: true
     },
     {
       name: "Dr Sithara Mehroon",
+      slug: "dr-sithara-mehroon",
       initials: "DSM",
       qualification: "BAMS, DGO, DIC",
       experience: "15+ Years Experience",
-      specialty: "Female Fertility & Wellness",
+      specialty: "Female Fertility & Women's Health",
       theme: "green",
       img: "/image copy 4.png"
     }
@@ -159,7 +162,7 @@ export function Doctors() {
                 </div>
 
                 {/* Content */}
-                <div className="px-6 text-center flex-1 flex flex-col relative z-10 group/text">
+                <div className="px-6 text-center flex-1 flex flex-col relative z-10 group/text mb-6">
                   <motion.h3 
                     className="text-2xl font-bold text-[#0f172a] mb-2 transition-colors duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-600 group-hover:to-cyan-500"
                     whileHover={{ scale: 1.05 }}
@@ -167,19 +170,13 @@ export function Doctors() {
                   >
                     {doc.name}
                   </motion.h3>
-                  <p className={`font-bold mb-3 ${styles.qualText} transition-transform duration-300 group-hover:-translate-y-0.5`}>{doc.qualification}</p>
-                  <p className="text-slate-500 text-sm mb-6 leading-relaxed flex-1">
-                    {doc.specialty}
+                  <p className={`font-bold text-base ${styles.qualText} transition-transform duration-300 group-hover:-translate-y-0.5`}>
+                    {doc.qualification}
                   </p>
-                  
-                  <div className={`inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full mb-8 mx-auto ${styles.badgeBg} ${styles.badgeText} bg-opacity-50 text-sm font-semibold`}>
-                    <Calendar className="w-4 h-4" />
-                    {doc.experience}
-                  </div>
                 </div>
                 
                 {/* View Profile Button */}
-                <Link href="#consultation" className={`w-full py-5 flex items-center justify-center gap-2 font-bold transition-colors ${styles.btnBg} ${styles.btnText}`}>
+                <Link href={`/doctors/${doc.slug}`} className={`w-full py-5 flex items-center justify-center gap-2 font-bold transition-colors ${styles.btnBg} ${styles.btnText}`}>
                   View Profile
                   <ArrowRight className="w-5 h-5" />
                 </Link>

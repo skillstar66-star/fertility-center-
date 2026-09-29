@@ -1,64 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "@/components/Icons";
+import { ArrowRight, ShieldCheck, Sparkles, Users, Leaf } from "@/components/Icons";
 import Image from "next/image";
+import Link from "next/link";
 
 export function About() {
-  const features = [
-    {
-      title: "Patient First Approach",
-      desc: "We prioritize your health and comfort at every step.",
-      color: "blue",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-          <circle cx="9" cy="7" r="4" />
-          <path d="M19 8v6m3-3h-6" />
-        </svg>
-      )
-    },
-    {
-      title: "Expert Medical Team",
-      desc: "Our experienced doctors and specialists provide the highest standard of care.",
-      color: "green",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-          <path d="M9 12h6m-3-3v6" />
-        </svg>
-      )
-    },
-    {
-      title: "Advanced Technology",
-      desc: "State-of-the-art facilities for accurate diagnosis and effective treatment.",
-      color: "blue",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
-          <path d="M8 21h8m-4-4v4" />
-        </svg>
-      )
-    },
-    {
-      title: "Holistic & Natural Care",
-      desc: "We believe in healing naturally and enhancing your quality of life.",
-      color: "green",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
-          <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
-          <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
-          <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
-        </svg>
-      )
-    }
-  ];
-
   return (
-    <section id="about" className="py-16 lg:py-24 bg-white relative overflow-hidden">
+    <section id="about" className="py-20 lg:py-28 bg-white relative overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Left Content */}
           <motion.div 
@@ -66,50 +17,58 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="flex flex-col max-w-2xl"
+            className="flex flex-col lg:col-span-7 max-w-2xl"
           >
-            <div className="text-[#16a34a] font-bold tracking-widest text-sm mb-4 uppercase">
-              ABOUT US
+            {/* Tag */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs uppercase tracking-wider mb-4 border border-emerald-100 self-start shadow-xs">
+              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
+              ABOUT THE CENTER
             </div>
 
-            <h2 className="text-4xl sm:text-[2.75rem] font-bold leading-[1.1] mb-6">
-              <span className="text-[#0f172a]">Compassionate Care.</span><br />
-              <span className="text-[#16a34a]">Better Health. Brighter Lives.</span>
+            {/* Title */}
+            <h2 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-[#0f172a] leading-[1.18] tracking-tight mb-6">
+              WELCOME TO KOVAI HEALTH CENTER
             </h2>
-            
-            <p className="text-slate-600 mb-10 leading-relaxed font-medium text-lg">
-              At Kovai Health Center, we are committed to providing comprehensive and personalized healthcare solutions with a focus on preventive care, advanced treatment, and patient well-being.
-            </p>
 
-            <div className="flex flex-col gap-6 mb-12">
-              {features.map((feature, idx) => (
-                <div key={idx} className="flex items-start gap-5">
-                  <div className={`w-14 h-14 shrink-0 rounded-full flex items-center justify-center border-[3px] 
-                    ${feature.color === 'blue' ? 'bg-[#f0f9ff] border-[#e0f2fe] text-[#0284c7]' : 'bg-[#f0fdf4] border-[#dcfce7] text-[#16a34a]'}`}>
-                    {feature.icon}
-                  </div>
-                  <div className="pt-1">
-                    <h3 className="font-bold text-[#0f172a] text-lg mb-1 leading-none">{feature.title}</h3>
-                    <p className="text-slate-500 text-sm leading-relaxed">{feature.desc}</p>
-                  </div>
+            {/* Blue Highlighted Attractive Callout */}
+            <motion.div 
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-blue-50 via-indigo-50/50 to-blue-50/30 border-l-4 border-blue-600 shadow-[0_4px_20px_rgba(37,99,235,0.08)] mb-6"
+            >
+              <div className="flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-md shadow-blue-500/20 mt-0.5">
+                  <Leaf className="w-5 h-5" />
                 </div>
-              ))}
-            </div>
-
-            {/* Our Mission Box */}
-            <div className="p-5 bg-white rounded-[20px] shadow-[0_8px_30px_rgba(0,0,0,0.06)] border border-slate-100 flex items-start gap-4 max-w-lg relative z-20">
-              <div className="text-[#0284c7] shrink-0 pt-1">
-                <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
-                  <path d="M12 8v4l3 3" />
-                </svg>
-              </div>
-              <div>
-                <h3 className="font-bold text-[#0284c7] text-[15px] mb-1">Our Mission</h3>
-                <p className="text-slate-600 text-[13px] leading-relaxed font-medium">
-                  To deliver ethical, affordable and quality healthcare that improves lives and builds healthier communities.
+                <p className="text-base sm:text-lg lg:text-xl font-bold text-blue-700 leading-snug">
+                  Provide personalized care using modern Ayurvedic and Unani approaches alongside natural, herb-based treatments.
                 </p>
               </div>
+            </motion.div>
+
+            {/* Supporting Content */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-slate-50/80 border border-slate-100 mb-8">
+              <div className="flex items-start gap-3.5">
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 mt-0.5">
+                  <Users className="w-5 h-5" />
+                </div>
+                <p className="text-slate-600 font-medium text-sm sm:text-base leading-relaxed">
+                  Having supported <strong className="text-[#0f172a] font-bold">10,000+ couples and individuals</strong>, we remain committed to creating a comfortable, confidential, and judgment-free environment where people can openly discuss their concerns and take informed steps towards better health and wellbeing.
+                </p>
+              </div>
+            </div>
+
+            {/* CTA Button linking to /about */}
+            <div>
+              <Link 
+                href="/about" 
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm sm:text-base font-bold text-white bg-[#0f172a] rounded-full hover:bg-brand-primary transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1 group"
+              >
+                Learn More About Our Center
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
             </div>
           </motion.div>
 
@@ -119,17 +78,26 @@ export function About() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative w-full h-full flex justify-center lg:justify-end items-center"
+            className="lg:col-span-5 relative w-full h-full flex justify-center lg:justify-end items-center"
           >
-            <div className="relative w-full max-w-[700px] h-auto lg:-mr-12">
+            <div className="relative w-full max-w-[550px] h-auto rounded-[32px] overflow-hidden shadow-2xl border border-slate-100 group bg-slate-50">
               <Image 
                 src="/about-image-1.png" 
                 alt="About Kovai Health Center" 
                 width={800} 
                 height={800} 
-                className="w-full h-auto object-contain rounded-[32px]"
+                className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105 brightness-[1.06] contrast-[1.03] saturate-[1.05]"
                 priority
               />
+              <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-white/60 shadow-lg flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white flex items-center justify-center shrink-0 shadow-sm">
+                  <ShieldCheck className="w-5 h-5" />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-slate-900">30 Years of Trusted Healthcare</h4>
+                  <p className="text-[11px] text-slate-500 font-medium">Ayurvedic & Unani Sexual Wellness & Fertility</p>
+                </div>
+              </div>
             </div>
           </motion.div>
 

@@ -7,6 +7,8 @@ import { Footer } from "@/components/Footer";
 import { Preloader } from "@/components/Preloader";
 import { IconGradients } from "@/components/Icons";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ConsultationModal } from "@/components/ConsultationModal";
+import { AeoGeoSchema } from "@/components/AeoGeoSchema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -15,9 +17,65 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Kovai Health Center – Ayurvedic & Unani Sexual Wellness",
-  description: "Personalized Ayurvedic & Unani herbal healthcare for sexual wellness, fertility concerns and holistic wellbeing in Coimbatore — backed by 27+ years of clinical experience.",
-  keywords: ["Kovai Health Center", "sexual wellness clinic in Coimbatore", "fertility care in Coimbatore", "Ayurvedic and Unani herbal care"],
+  title: "Best Fertility Center in Coimbatore | Kovai Health Center",
+  description: "Trusted fertility & sexual wellness care in Coimbatore with 30+ yrs experience. Expert natural Ayurvedic treatments for male & female fertility. Book today!",
+  keywords: [
+    // Core & Location Keywords
+    "Best Fertility Center in Coimbatore",
+    "Best Infertility Hospital in Coimbatore",
+    "Kovai Health Center",
+    "Fertility Clinic Coimbatore",
+    "Ayurvedic Fertility Treatment Coimbatore",
+    "Natural Infertility Care Coimbatore",
+    "Top Fertility Specialist in Coimbatore",
+    "Dr Jaleel Kovai Health Center",
+    
+    // Male Infertility & Sexual Health Keywords
+    "Male Fertility Treatment Coimbatore",
+    "Low Sperm Count Treatment in Coimbatore",
+    "Oligospermia Natural Cure",
+    "Azoospermia Treatment Coimbatore",
+    "Sperm Motility Improvement Medicine",
+    "Erectile Dysfunction Treatment Coimbatore",
+    "Premature Ejaculation Specialist Coimbatore",
+    "Male Low Libido Treatment",
+    "Epididymal Cyst Treatment Coimbatore",
+    "Varicocele Ayurvedic Treatment",
+    "Male Pre-Marital Fitness Checkup Coimbatore",
+    "Male Preconception Health Care",
+
+    // Female Fertility & Gynaecology Keywords
+    "Female Fertility Treatment Coimbatore",
+    "PCOS Treatment in Coimbatore",
+    "PCOD Natural Ayurvedic Treatment",
+    "Ovarian Cyst Treatment Without Surgery",
+    "Uterine Fibroids Natural Medicine",
+    "Female Hormonal Imbalance Treatment",
+    "Irregular Periods Ayurvedic Medicine",
+    "Fallopian Tube Blockage Natural Treatment",
+    "Female Low Libido Treatment",
+    "Female Preconception Health Care Coimbatore",
+    "Premarital Fitness in Women",
+
+    // Counseling & Special Care
+    "Fertility Counseling Coimbatore",
+    "Couple Counseling Coimbatore",
+    "Pre-Marital Counseling Coimbatore",
+    "Sexual Wellness Clinic Coimbatore",
+
+    // Regional & Tamil transliterated search queries
+    "Infertility Treatment Near Me",
+    "Best Doctor for Childless Couples in Coimbatore",
+    "Kovai Karutharippu Maiyam",
+    "Kovai Health Centre Ramanathapuram"
+  ],
+  openGraph: {
+    title: "Best Fertility Center in Coimbatore | Kovai Health Center",
+    description: "Trusted fertility & sexual wellness care in Coimbatore with 30+ yrs experience. Expert natural Ayurvedic treatments for male & female fertility. Book today!",
+    siteName: "Kovai Health Center",
+    locale: "en_IN",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -26,8 +84,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className={`${inter.variable} font-sans antialiased bg-mesh min-h-screen flex flex-col relative`}>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <AeoGeoSchema />
+      </head>
+      <body 
+        className={`${inter.variable} font-sans antialiased bg-mesh min-h-screen flex flex-col relative`}
+        suppressHydrationWarning
+      >
         <IconGradients />
         <Preloader />
         <Navbar />
@@ -36,6 +100,7 @@ export default function RootLayout({
         </main>
         <Footer />
         
+        <ConsultationModal />
         <FloatingWhatsApp />
         <BottomNav />
       </body>

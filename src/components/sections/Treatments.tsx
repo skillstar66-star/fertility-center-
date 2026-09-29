@@ -1,248 +1,286 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   ArrowRight, Activity, HeartPulse, Scale, Dna,
   ShieldCheck, Droplets, FlaskConical, Stethoscope, 
-  Dumbbell, Heart, Users, Flower2
+  Dumbbell, Heart, Users, Flower2, Sparkles, CheckCircle2
 } from "@/components/Icons";
 import Link from "next/link";
 import Image from "next/image";
 
 export function Treatments() {
-  const maleTreatments = [
-    { name: "Premature Ejaculation", icon: <Droplets className="w-4 h-4" /> },
-    { name: "Erectile Dysfunction", icon: <Activity className="w-4 h-4" /> },
-    { name: "Low Sperm Count", icon: <FlaskConical className="w-4 h-4" /> },
-    { name: "Hormonal Imbalances", icon: <Scale className="w-4 h-4" /> },
-    { name: "Azoospermia", icon: <Dna className="w-4 h-4" /> },
-    { name: "Anejaculation", icon: <Activity className="w-4 h-4" /> },
-    { name: "Varicocele", icon: <Stethoscope className="w-4 h-4" /> },
-    { name: "Hydrocele", icon: <Droplets className="w-4 h-4" /> },
-    { name: "Sexual Wellness", icon: <ShieldCheck className="w-4 h-4" /> },
-    { name: "Pre-Marital Fitness", icon: <Dumbbell className="w-4 h-4" /> },
+  const departments = [
+    {
+      id: "sexology",
+      name: "Sexology & Sexual Wellness",
+      tag: "Sexual Health",
+      desc: "Specialized, confidential care for male and female sexual wellness and intimate health concerns.",
+      color: "blue",
+      themeGradient: "from-blue-600 to-indigo-600",
+      bgLight: "bg-blue-50/70",
+      borderColor: "border-blue-100",
+      textColor: "text-blue-600",
+      services: [
+        { name: "Premature Ejaculation", slug: "premature-ejaculation", icon: <Droplets className="w-4 h-4" /> },
+        { name: "Erectile Dysfunction", slug: "erectile-dysfunction", icon: <Activity className="w-4 h-4" /> },
+        { name: "Sexual Wellness", slug: "sexual-wellness", icon: <ShieldCheck className="w-4 h-4" /> },
+        { name: "Anejaculation", slug: "anejaculation", icon: <Activity className="w-4 h-4" /> },
+        { name: "Low Libido (Male)", slug: "low-libido-male", icon: <Heart className="w-4 h-4" /> },
+        { name: "Low Libido (Female)", slug: "low-libido-female", icon: <Heart className="w-4 h-4" /> },
+      ]
+    },
+    {
+      id: "male-fertility",
+      name: "Male Fertility",
+      tag: "Fertility Care",
+      desc: "Comprehensive evaluation and natural Ayurvedic & Unani therapies to enhance male fertility parameters.",
+      color: "emerald",
+      themeGradient: "from-emerald-600 to-teal-600",
+      bgLight: "bg-emerald-50/70",
+      borderColor: "border-emerald-100",
+      textColor: "text-emerald-600",
+      services: [
+        { name: "Low Sperm Count", slug: "low-sperm-count", icon: <FlaskConical className="w-4 h-4" /> },
+        { name: "Azoospermia", slug: "azoospermia", icon: <Dna className="w-4 h-4" /> },
+        { name: "Varicocele", slug: "varicocele", icon: <Stethoscope className="w-4 h-4" /> },
+        { name: "Hydrocele", slug: "hydrocele", icon: <Droplets className="w-4 h-4" /> },
+        { name: "Epididymal Cyst", slug: "epididymal-cyst", icon: <Activity className="w-4 h-4" /> },
+      ]
+    },
+    {
+      id: "female-fertility",
+      name: "Female Fertility",
+      tag: "Fertility Care",
+      desc: "Holistic, herb-based treatments to regulate menstrual health, manage cysts and support natural conception.",
+      color: "rose",
+      themeGradient: "from-rose-500 to-pink-600",
+      bgLight: "bg-rose-50/70",
+      borderColor: "border-rose-100",
+      textColor: "text-rose-600",
+      services: [
+        { name: "PCOS / PCOD", slug: "pcos-pcod", icon: <Activity className="w-4 h-4" /> },
+        { name: "Ovarian Cyst", slug: "ovarian-cyst", icon: <Stethoscope className="w-4 h-4" /> },
+        { name: "Uterine Cyst", slug: "uterine-cyst", icon: <Activity className="w-4 h-4" /> },
+      ]
+    },
+    {
+      id: "male-reproductive",
+      name: "Male Reproductive Health",
+      tag: "Reproductive Health",
+      desc: "Targeted therapies to balance vital male hormones and prepare prospective fathers for healthy conception.",
+      color: "cyan",
+      themeGradient: "from-cyan-600 to-blue-600",
+      bgLight: "bg-cyan-50/70",
+      borderColor: "border-cyan-100",
+      textColor: "text-cyan-600",
+      services: [
+        { name: "Male Hormonal Imbalances", slug: "male-hormonal-imbalances", icon: <Scale className="w-4 h-4" /> },
+        { name: "Male Preconception Health Care", slug: "male-preconception-health-care", icon: <HeartPulse className="w-4 h-4" /> },
+      ]
+    },
+    {
+      id: "female-reproductive",
+      name: "Female Reproductive Health",
+      tag: "Reproductive Health",
+      desc: "Personalized care plans addressing endocrine balance, cycle regularities and optimal preconception wellness.",
+      color: "purple",
+      themeGradient: "from-purple-600 to-indigo-600",
+      bgLight: "bg-purple-50/70",
+      borderColor: "border-purple-100",
+      textColor: "text-purple-600",
+      services: [
+        { name: "Female Hormonal Imbalances", slug: "female-hormonal-imbalances", icon: <Scale className="w-4 h-4" /> },
+        { name: "Female Preconception Health Care", slug: "female-preconception-health-care", icon: <Flower2 className="w-4 h-4" /> },
+      ]
+    },
+    {
+      id: "counselling",
+      name: "Pre-Marital & Couple Counselling",
+      tag: "Guidance & Counselling",
+      desc: "Compassionate, confidential support for couples and individuals preparing for marriage or overcoming relationship hurdles.",
+      color: "amber",
+      themeGradient: "from-amber-500 to-orange-600",
+      bgLight: "bg-amber-50/70",
+      borderColor: "border-amber-100",
+      textColor: "text-amber-600",
+      services: [
+        { name: "Male Pre-Marital Fitness", slug: "male-pre-marital-fitness", icon: <Dumbbell className="w-4 h-4" /> },
+        { name: "Female Pre-Marital Fitness", slug: "female-pre-marital-fitness", icon: <Flower2 className="w-4 h-4" /> },
+        { name: "Couple Counselling", slug: "couple-counselling", icon: <Users className="w-4 h-4" /> },
+      ]
+    }
   ];
 
-  const femaleTreatments = [
-    { name: "PCOS / PCOD", icon: <Activity className="w-4 h-4" /> },
-    { name: "Ovarian Cyst", icon: <Stethoscope className="w-4 h-4" /> },
-    { name: "Uterine Cyst", icon: <Activity className="w-4 h-4" /> },
-    { name: "Hormonal Imbalances", icon: <Scale className="w-4 h-4" /> },
-    { name: "Low Libido", icon: <Heart className="w-4 h-4" /> },
-    { name: "Pre-Marital Fitness", icon: <Flower2 className="w-4 h-4" /> },
-    { name: "Female Preconception Health Care", icon: <Activity className="w-4 h-4" /> },
-    { name: "Couple Counselling", icon: <Users className="w-4 h-4" /> },
-  ];
+  const [activeTab, setActiveTab] = useState("all");
+
+  const filteredDepts = activeTab === "all" 
+    ? departments 
+    : departments.filter(d => d.id === activeTab);
 
   return (
     <section id="treatments" className="py-24 bg-[#fafbfc] relative">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#0f172a] mb-6">
+        {/* Header */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-50 text-emerald-700 font-bold text-xs sm:text-sm tracking-wide mb-4">
+            <Sparkles className="w-4 h-4 text-emerald-600" />
+            OUR CLINICAL DEPARTMENTS & SERVICES
+          </div>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0f172a] mb-5 tracking-tight">
             Specialized Care for Your Health Concerns
           </h2>
-          <p className="text-lg text-slate-600">
-            Comprehensive healthcare options tailored to address both male and female specific health and fertility concerns.
+          <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
+            Personalized, confidential treatments across our 6 specialized departments — combining 30 years of clinical experience with <span className="text-brand-primary font-bold bg-emerald-50/80 px-2.5 py-0.5 rounded-lg border border-emerald-200/60 shadow-xs inline-block">authentic Ayurvedic & Unani care</span>.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          
-          {/* Men's Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="rounded-[32px] p-8 lg:p-12 relative overflow-hidden bg-gradient-to-br from-blue-50/80 to-white border border-blue-100/50 shadow-[0_8px_40px_rgba(37,99,235,0.06)]"
+        {/* Filter Pills */}
+        <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-12">
+          <button
+            onClick={() => setActiveTab("all")}
+            className={`px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all duration-300 ${
+              activeTab === "all"
+                ? "bg-[#0f172a] text-white shadow-md scale-105"
+                : "bg-white text-slate-600 border border-slate-200 hover:border-brand-primary hover:text-brand-primary"
+            }`}
           >
-            {/* Background watermark */}
-            <div className="absolute top-10 right-0 lg:-right-10 opacity-30 pointer-events-none">
-              <svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0 100 L100 100 L140 20 L180 180 L220 100 L400 100" stroke="#bfdbfe" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </div>
-            
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-500/20">
-                <Activity className="w-8 h-8" />
-              </div>
-              <h3 className="text-[32px] leading-tight font-bold text-[#0f172a] mb-4">Men's Sexual &<br/>Fertility Wellness</h3>
-              <p className="text-slate-600 mb-8 max-w-sm font-medium">Expert care for every stage of your reproductive health journey.</p>
-              
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4">
-                {maleTreatments.map((t, i) => (
-                  <Link 
-                    key={i} 
-                    href={`/treatments/${t.name.toLowerCase().replace(/ \/ /g, '-').replace(/ /g, '-')}`}
-                    className="flex items-center bg-white rounded-xl p-3 shadow-sm border border-slate-100 hover:shadow-md hover:border-blue-200 transition-all cursor-pointer group"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 mr-3 shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                      {t.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <span className="block text-slate-700 text-[11px] sm:text-sm font-semibold group-hover:text-blue-600 transition-colors leading-tight break-words">{t.name}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              
-              <div className="text-blue-500 text-sm font-semibold italic mb-8">
-                + more concerns
-              </div>
-              
-              <div className="mt-auto">
-                <div className="bg-[#eef5fa] rounded-2xl p-6 mb-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-blue-100/50 relative overflow-hidden">
-                  <div className="flex-1 relative z-10">
-                    <div className="flex items-center gap-2 text-blue-700 font-bold mb-2">
-                      <div className="w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center text-white">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                      </div>
-                      Confidential. Compassionate. Expert Care.
-                    </div>
-                    <p className="text-slate-600 text-sm">Personalized treatments backed by science and trust.</p>
-                  </div>
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 relative z-10 border-4 border-white shadow-sm">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1516585427167-9f4af9627e6c?q=80&w=400&auto=format&fit=crop" 
-                      alt="Happy couple" 
-                      fill 
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-                
-                <Link href="#consultation" className="w-full py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-bold text-lg flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/30 transition-all">
-                  Explore Men's Care
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Women's Card */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="rounded-[32px] p-8 lg:p-12 relative overflow-hidden bg-gradient-to-br from-rose-50/80 to-white border border-rose-100/50 shadow-[0_8px_40px_rgba(225,29,72,0.06)]"
-          >
-            {/* Background watermark */}
-            <div className="absolute top-10 right-0 lg:-right-4 opacity-20 pointer-events-none">
-              <svg width="300" height="300" viewBox="0 0 24 24" fill="none" stroke="#fda4af" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
-              </svg>
-            </div>
-            
-            <div className="relative z-10 flex flex-col h-full">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-400 to-rose-500 flex items-center justify-center text-white mb-6 shadow-lg shadow-rose-500/20">
-                <HeartPulse className="w-8 h-8" />
-              </div>
-              <h3 className="text-[32px] leading-tight font-bold text-[#4c1d95] mb-4">Women's Fertility &<br/>Wellness</h3>
-              <p className="text-slate-600 mb-8 max-w-sm font-medium">Comprehensive care for women's health and fertility wellness.</p>
-              
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-4">
-                {femaleTreatments.map((t, i) => (
-                  <Link 
-                    key={i} 
-                    href={`/treatments/${t.name.toLowerCase().replace(/ \/ /g, '-').replace(/ /g, '-')}`}
-                    className="flex items-center bg-white rounded-xl p-3 shadow-sm border border-slate-100 hover:shadow-md hover:border-rose-200 transition-all cursor-pointer group"
-                  >
-                    <div className="w-8 h-8 rounded-full bg-rose-100 flex items-center justify-center text-rose-500 mr-3 shrink-0 group-hover:bg-rose-500 group-hover:text-white transition-colors">
-                      {t.icon}
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <span className="block text-slate-700 text-[11px] sm:text-sm font-semibold group-hover:text-rose-600 transition-colors leading-tight break-words">{t.name}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              
-              <div className="mt-auto pt-8">
-                <div className="bg-rose-50/80 rounded-2xl p-6 mb-6 flex flex-col sm:flex-row items-center sm:items-start gap-6 border border-rose-100/50 relative overflow-hidden">
-                  <div className="flex-1 relative z-10">
-                    <div className="flex items-center gap-2 text-rose-700 font-bold mb-2">
-                      <div className="w-6 h-6 rounded-full bg-rose-500 flex items-center justify-center text-white">
-                        <ShieldCheck className="w-3.5 h-3.5" />
-                      </div>
-                      Empowering Women. Enriching Lives.
-                    </div>
-                    <p className="text-slate-600 text-sm">Safe, supportive and specialized care for every woman.</p>
-                  </div>
-                  <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden shrink-0 relative z-10 border-4 border-white shadow-sm">
-                    <Image 
-                      src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=400&auto=format&fit=crop" 
-                      alt="Happy woman" 
-                      fill 
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-                
-                <Link href="#consultation" className="w-full py-4 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold text-lg flex items-center justify-center hover:shadow-lg hover:shadow-rose-500/30 transition-all">
-                  Explore Women's Care
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-
+            All Departments (6)
+          </button>
+          {departments.map((dept) => (
+            <button
+              key={dept.id}
+              onClick={() => setActiveTab(dept.id)}
+              className={`px-4 py-2.5 rounded-full text-xs sm:text-sm font-semibold transition-all duration-300 ${
+                activeTab === dept.id
+                  ? "bg-brand-primary text-white shadow-md scale-105"
+                  : "bg-white text-slate-600 border border-slate-200 hover:border-brand-primary hover:text-brand-primary"
+              }`}
+            >
+              {dept.name}
+            </button>
+          ))}
         </div>
-        
-        {/* Bottom Feature Cards */}
+
+        {/* Departments Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+          <AnimatePresence mode="popLayout">
+            {filteredDepts.map((dept, idx) => (
+              <motion.div
+                key={dept.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, delay: idx * 0.05 }}
+                className="bg-white rounded-[28px] p-6 sm:p-8 border border-slate-100 shadow-[0_8px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.08)] transition-all duration-300 flex flex-col justify-between group"
+              >
+                <div>
+                  {/* Department Tag & Number */}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className={`text-[11px] font-bold uppercase tracking-wider px-3 py-1 rounded-full ${dept.bgLight} ${dept.textColor} border ${dept.borderColor}`}>
+                      {dept.tag}
+                    </span>
+                    <span className="text-xs font-bold text-slate-300">0{departments.findIndex(d => d.id === dept.id) + 1}</span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0f172a] mb-2.5 group-hover:text-brand-primary transition-colors">
+                    {dept.name}
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed mb-6">
+                    {dept.desc}
+                  </p>
+
+                  {/* Services List */}
+                  <div className="space-y-2 mb-6">
+                    <div className="text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">Services Covered:</div>
+                    {dept.services.map((service, sIdx) => (
+                      <Link
+                        key={sIdx}
+                        href={`/treatments/${service.slug}`}
+                        className="flex items-center justify-between p-2.5 rounded-xl bg-slate-50/80 hover:bg-emerald-50/60 border border-slate-100 hover:border-emerald-200 transition-all group/item"
+                      >
+                        <div className="flex items-center gap-2.5 min-w-0">
+                          <div className="w-7 h-7 rounded-lg bg-white flex items-center justify-center text-slate-600 group-hover/item:text-emerald-600 shadow-xs shrink-0">
+                            {service.icon}
+                          </div>
+                          <span className="text-xs sm:text-sm font-semibold text-slate-700 group-hover/item:text-emerald-800 truncate">
+                            {service.name}
+                          </span>
+                        </div>
+                        <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover/item:text-emerald-600 group-hover/item:translate-x-1 transition-transform shrink-0" />
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Footer Action */}
+                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                  <Link
+                    href="#consultation"
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-bold ${dept.textColor} hover:underline`}
+                  >
+                    Book Consultation <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                  <span className="text-xs font-semibold text-slate-400">
+                    {dept.services.length} {dept.services.length === 1 ? 'Service' : 'Services'}
+                  </span>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Bottom Feature Bar */}
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-8 bg-white rounded-2xl p-6 shadow-sm border border-slate-100 grid grid-cols-2 gap-y-8 gap-x-4 lg:flex lg:flex-row lg:justify-between lg:items-start lg:gap-4"
+          className="mt-14 bg-white rounded-[24px] p-6 sm:p-8 shadow-sm border border-slate-100 grid grid-cols-2 lg:grid-cols-4 gap-6"
         >
-          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4">
-            <div className="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 border border-blue-100">
               <ShieldCheck className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm mb-1">Expert Doctors</h4>
-              <p className="text-slate-500 text-xs">Experienced & certified specialists</p>
+              <h4 className="font-bold text-slate-800 text-sm">100% Confidential</h4>
+              <p className="text-slate-500 text-xs">Complete privacy & judgment-free care</p>
             </div>
           </div>
           
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
-          
-          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4">
-            <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
-              <ShieldCheck className="w-6 h-6" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 border border-emerald-100">
+              <Stethoscope className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm mb-1">100% Confidential</h4>
-              <p className="text-slate-500 text-xs">Your privacy is our priority</p>
+              <h4 className="font-bold text-slate-800 text-sm">30 Years Experience</h4>
+              <p className="text-slate-500 text-xs">Second-generation certified doctors</p>
             </div>
           </div>
-          
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
 
-          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4">
-            <div className="w-12 h-12 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 border border-purple-100">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center shrink-0 border border-purple-100">
               <Activity className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm mb-1">Personalized Care</h4>
-              <p className="text-slate-500 text-xs">Treatment tailored to you</p>
+              <h4 className="font-bold text-slate-800 text-sm">Personalized Care</h4>
+              <p className="text-slate-500 text-xs">Ayurvedic & Unani herb-based therapies</p>
             </div>
           </div>
 
-          <div className="hidden lg:block w-px h-12 bg-slate-100" />
-
-          <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4">
-            <div className="w-12 h-12 rounded-full bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 border border-orange-100">
+          <div className="flex items-center gap-3.5">
+            <div className="w-12 h-12 rounded-2xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 border border-orange-100">
               <Users className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="font-bold text-slate-800 text-sm mb-1">Trusted by Thousands</h4>
-              <p className="text-slate-500 text-xs">Successful journeys & happy families</p>
+              <h4 className="font-bold text-slate-800 text-sm">10,000+ Patients</h4>
+              <p className="text-slate-500 text-xs">Trusted by couples & individuals</p>
             </div>
           </div>
         </motion.div>

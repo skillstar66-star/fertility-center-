@@ -7,29 +7,29 @@ export function Process() {
   const steps = [
     {
       num: "01",
-      title: "Share Your Concern",
-      desc: "Reach out to us completely confidentially.",
+      title: "Understand",
+      desc: "We listen to your concerns and understand your health needs.",
       color: "blue",
       icon: <MessageSquare className="w-8 h-8" />
     },
     {
       num: "02",
-      title: "Consult Our Doctor",
-      desc: "Private session with experienced specialists.",
+      title: "Consult",
+      desc: "Our doctors discuss your concerns and provide professional guidance.",
       color: "teal",
       icon: <User className="w-8 h-8" />
     },
     {
       num: "03",
-      title: "Understand Options",
-      desc: "We explain your condition and possible treatments.",
+      title: "Personalized Care",
+      desc: "We recommend care and treatment based on your individual needs.",
       color: "purple",
       icon: <ClipboardCheck className="w-8 h-8" />
     },
     {
       num: "04",
-      title: "Follow Care Plan",
-      desc: "A personalized & convenient treatment plan.",
+      title: "Follow-Up",
+      desc: "We monitor your progress and provide continued guidance throughout your journey.",
       color: "pink",
       icon: <CalendarCheck className="w-8 h-8" />
     }

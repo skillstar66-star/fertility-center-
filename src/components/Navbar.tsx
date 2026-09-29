@@ -9,28 +9,30 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Home", href: "/" },
-  { name: "About Us", href: "/#about" },
+  { name: "About Us", href: "/about" },
   { name: "Treatments", href: "/#treatments" },
   { 
     name: "Male Fertility", 
     href: "/#treatments",
     dropdown: [
       "Premature Ejaculation", "Erectile Dysfunction", "Low Sperm Count", 
-      "Hormonal Imbalances", "Azoospermia", "Anejaculation", 
-      "Varicocele", "Hydrocele", "Sexual Wellness", "Pre-Marital Fitness"
+      "Male Hormonal Imbalances", "Azoospermia", "Anejaculation", 
+      "Varicocele", "Hydrocele", "Epididymal Cyst", "Low Libido in Men", 
+      "Male Preconception Health Care", "Male Pre-Marital Fitness", 
+      "Couple Counselling", "Sexual Wellness"
     ]
   },
   { 
     name: "Female Fertility", 
     href: "/#treatments",
     dropdown: [
-      "PCOS / PCOD", "Ovarian Cyst", "Uterine Cyst", "Hormonal Imbalances", 
-      "Low Libido", "Pre-Marital Fitness", "Female Preconception Health Care", 
+      "PCOS / PCOD", "Ovarian Cyst", "Uterine Cyst", "Female Hormonal Imbalances", 
+      "Low Libido", "Female Pre-Marital Fitness", "Female Preconception Health Care", 
       "Couple Counselling"
     ]
   },
   { name: "Doctors", href: "/#doctors" },
-  { name: "Awards", href: "/#awards" },
+  { name: "Awards", href: "/awards" },
   { name: "Testimonials", href: "/#testimonials" },
   { name: "Contact", href: "/contact" },
 ];
@@ -95,17 +97,46 @@ export function Navbar() {
                   </Link>
                   
                   {link.dropdown && (
-                    <div className="absolute top-[100%] left-0 pt-2 w-64 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-[60]">
+                    <div className="absolute top-[100%] left-0 pt-2 w-72 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 z-[60]">
                       <div className="bg-white rounded-2xl shadow-xl border border-slate-100 py-3 flex flex-col max-h-[60vh] overflow-y-auto custom-scrollbar">
-                        {link.dropdown.map((item) => (
-                          <Link 
-                            key={item} 
-                            href={item === "Premature Ejaculation" ? "/treatments/premature-ejaculation" : "#treatments"} 
-                            className="px-5 py-2.5 text-sm text-slate-600 hover:bg-brand-cyan/10 hover:text-brand-primary transition-colors font-medium border-l-2 border-transparent hover:border-brand-primary"
-                          >
-                            {item}
-                          </Link>
-                        ))}
+                        {link.dropdown.map((item) => {
+                          const slugMap: Record<string, string> = {
+                            "Premature Ejaculation": "premature-ejaculation",
+                            "Erectile Dysfunction": "erectile-dysfunction",
+                            "Low Sperm Count": "low-sperm-count",
+                            "Male Hormonal Imbalances": "male-hormonal-imbalances",
+                            "Hormonal Imbalances": "male-hormonal-imbalances",
+                            "Azoospermia": "azoospermia",
+                            "Anejaculation": "anejaculation",
+                            "Varicocele": "varicocele",
+                            "Hydrocele": "hydrocele",
+                            "Epididymal Cyst": "epididymal-cyst",
+                            "Sexual Wellness": "sexual-wellness",
+                            "PCOS / PCOD": "pcos-pcod",
+                            "Ovarian Cyst": "ovarian-cyst",
+                            "Uterine Cyst": "uterine-cyst",
+                            "Female Hormonal Imbalances": "female-hormonal-imbalances",
+                            "Low Libido": "low-libido-female",
+                            "Low Libido in Men": "low-libido-male",
+                            "Male Low Libido": "low-libido-male",
+                            "Male Pre-Marital Fitness": "male-pre-marital-fitness",
+                            "Female Pre-Marital Fitness": "female-pre-marital-fitness",
+                            "Pre-Marital Fitness": "male-pre-marital-fitness",
+                            "Female Preconception Health Care": "female-preconception-health-care",
+                            "Male Preconception Health Care": "male-preconception-health-care",
+                            "Couple Counselling": "couple-counselling",
+                          };
+                          const targetSlug = slugMap[item] || item.toLowerCase().replace(/ \/ /g, '-').replace(/ /g, '-');
+                          return (
+                            <Link 
+                              key={item} 
+                              href={`/treatments/${targetSlug}`}
+                              className="px-5 py-2.5 text-sm text-slate-600 hover:bg-emerald-50 hover:text-brand-primary transition-colors font-medium border-l-2 border-transparent hover:border-brand-primary"
+                            >
+                              {item}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
