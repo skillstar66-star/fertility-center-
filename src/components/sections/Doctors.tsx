@@ -138,10 +138,7 @@ export function Doctors() {
                 className={`flex flex-col rounded-[32px] border-2 ${styles.card} overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 relative bg-white shrink-0 w-[85vw] sm:w-[320px] md:w-auto snap-center`}
               >
                 {/* Top badges */}
-                <div className="flex justify-between items-center p-6 pb-0 mb-4">
-                  <div className={`w-14 h-12 rounded-2xl flex items-center justify-center font-black text-xl ${styles.badgeBg} ${styles.badgeText} shadow-xs`}>
-                    {doc.initials}
-                  </div>
+                <div className="flex justify-end items-center p-6 pb-0 mb-4">
                   <div className={`w-10 h-10 rounded-full flex items-center justify-center bg-white border border-slate-200 shadow-sm ${styles.iconColor}`}>
                     <ShieldCheck className="w-5 h-5" />
                   </div>

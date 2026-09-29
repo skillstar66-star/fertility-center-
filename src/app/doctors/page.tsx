@@ -54,10 +54,7 @@ export default function DoctorsListPage() {
             >
               <div>
                 {/* Top Badge */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-10 rounded-xl bg-blue-50 text-blue-600 font-extrabold text-lg flex items-center justify-center">
-                    {doc.initials}
-                  </div>
+                <div className="flex items-center justify-end mb-6">
                   <div className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                     <ShieldCheck className="w-3.5 h-3.5" />
                     Verified

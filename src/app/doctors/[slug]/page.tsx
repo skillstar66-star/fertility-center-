@@ -142,20 +142,8 @@ export default function DoctorProfilePage({ params }: PageProps) {
 
           <div className="flex flex-col md:flex-row items-start md:items-center gap-6 lg:gap-10 relative z-10">
             
-            {/* Avatar with Double Glowing Ring & Initials Badge */}
+            {/* Avatar with Double Glowing Ring */}
             <div className="relative shrink-0 mx-auto md:mx-0">
-              
-              {/* Initials Badge */}
-              <div className="absolute -top-2 -left-2 z-20 w-12 h-12 rounded-full bg-gradient-to-tr from-blue-600 to-cyan-600 text-white font-black text-sm flex items-center justify-center shadow-lg border-[3px] border-white">
-                {doctor.initials}
-              </div>
-
-              {/* Online indicator */}
-              <div className="absolute -bottom-1 -right-1 z-20 px-2.5 py-0.5 rounded-full bg-emerald-500 text-white font-extrabold text-[10px] flex items-center gap-1 shadow-md border-2 border-white">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                <span>Available</span>
-              </div>
-
               {/* Circular Photo */}
               <div className="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full p-2 bg-gradient-to-tr from-blue-500 via-cyan-400 to-indigo-600 shadow-xl group-hover:scale-102 transition-transform duration-500">
                 <div className="w-full h-full rounded-full overflow-hidden bg-slate-100 relative border-4 border-white shadow-inner">
