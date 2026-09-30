@@ -68,7 +68,6 @@ export function Footer() {
                 { name: 'About Us', href: '/about' },
                 { name: 'Doctors', href: '/#doctors' },
                 { name: 'Awards', href: '/awards' },
-                { name: 'Gallery', href: '/awards' },
                 { name: 'Reviews', href: '/#testimonials' }
               ].map((item) => (
                 <li key={item.name}>
@@ -111,15 +110,20 @@ export function Footer() {
 
             <div className="space-y-2.5 sm:space-y-4">
               {/* Address */}
-              <div className="flex items-start gap-1.5 sm:gap-3 group">
-                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-md sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5">
+              <a 
+                href="https://maps.google.com/?cid=10792462736540873178"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-start gap-1.5 sm:gap-3 group hover:opacity-90 transition-opacity"
+              >
+                <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-md sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5 group-hover:bg-emerald-500/20 transition-colors">
                   <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
                 <div className="text-[10px] sm:text-sm text-slate-300 leading-tight">
-                  <p className="font-bold text-white text-[11px] sm:text-sm">Gandhipuram</p>
+                  <p className="font-bold text-white text-[11px] sm:text-sm group-hover:text-emerald-400 transition-colors">Gandhipuram</p>
                   <p className="text-slate-400 text-[9.5px] sm:text-xs">CBE - 641018</p>
                 </div>
-              </div>
+              </a>
 
               {/* Phone Numbers */}
               <div className="flex items-start gap-1.5 sm:gap-3 group">
@@ -163,12 +167,8 @@ export function Footer() {
         </div>
 
         {/* Copyright Bar */}
-        <div className="border-t border-white/10 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-500 text-center sm:text-left">
+        <div className="border-t border-white/10 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-slate-500">
           <p>© {new Date().getFullYear()} Kovai Health Center. All Rights Reserved.</p>
-          <div className="flex gap-4 sm:gap-6">
-            <Link href="#privacy" className="hover:text-white transition-colors">Privacy Policy</Link>
-            <Link href="#terms" className="hover:text-white transition-colors">Terms of Service</Link>
-          </div>
         </div>
       </div>
     </footer>

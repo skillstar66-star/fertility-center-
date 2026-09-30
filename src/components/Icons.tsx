@@ -250,3 +250,27 @@ export const Check = ({ gradient, className, size, width, height, ...props }: Ic
   <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><polyline points="20 6 9 17 4 12"></polyline></svg>
 );
 
+export const Play = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><polygon points="6 3 20 12 6 21 6 3" fill="currentColor"></polygon></svg>
+);
+
+export const PlayCircle = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8" fill="currentColor"></polygon></svg>
+);
+
+export const Video = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2" ry="2"></rect></svg>
+);
+
+export const Eye = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+);
+
+export const Share2 = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+);
+
+export const Search = ({ gradient, className, size, width, height, ...props }: IconProps) => (
+  <svg xmlns="http://www.w3.org/2000/svg" width={size || width || 24} height={size || height || 24} viewBox="0 0 24 24" {...getColors(gradient)} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={className} {...props}><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+);
+

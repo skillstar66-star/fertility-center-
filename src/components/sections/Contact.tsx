@@ -365,6 +365,29 @@ export function Contact() {
             </form>
           </motion.div>
         </div>
+
+        {/* Google Maps Location Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-10 sm:mt-12 relative w-full h-[400px] sm:h-[480px] rounded-3xl overflow-hidden border-2 border-slate-200 shadow-xl bg-slate-100"
+        >
+          {/* Exact Official Google Maps Business Embed with CID */}
+          <iframe
+            src="https://maps.google.com/maps?cid=10792462736540873178&t=m&z=16&ie=UTF8&iwloc=&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={false}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Kovai Health Center & Nature Cure Fertility Center Location"
+            className="w-full h-full"
+          />
+        </motion.div>
+
       </div>
     </section>
   );
