@@ -167,8 +167,36 @@ export function Footer() {
         </div>
 
         {/* Copyright Bar */}
-        <div className="border-t border-white/10 pt-6 sm:pt-8 text-center text-xs sm:text-sm text-slate-500">
-          <p>© {new Date().getFullYear()} Kovai Health Center. All Rights Reserved.</p>
+        <div className="border-t border-white/10 pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left text-xs sm:text-sm text-slate-400 md:pr-28 pb-8 sm:pb-0">
+          <p className="font-medium text-slate-400">
+            © {new Date().getFullYear()} <span className="text-slate-200 font-semibold">Kovai Health Center</span>. All Rights Reserved.
+          </p>
+
+          <a 
+            href="https://www.skillstardigitalsolutions.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-900 text-xs text-slate-300 border border-white/15 hover:border-cyan-400/60 shadow-lg hover:shadow-cyan-500/25 transition-all duration-300 group transform hover:-translate-y-0.5"
+            title="Skillstar Digital Solutions - Web Development & Digital Solutions"
+          >
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span className="text-slate-400 font-medium text-[11px] sm:text-xs">Created by</span>
+            <span className="font-extrabold bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 bg-clip-text text-transparent tracking-wide text-[11px] sm:text-xs group-hover:brightness-125 transition-all">
+              Skillstar Digital Solutions
+            </span>
+            <svg 
+              className="w-3.5 h-3.5 text-cyan-400 group-hover:text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor" 
+              strokeWidth="2.5"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+            </svg>
+          </a>
         </div>
       </div>
     </footer>
