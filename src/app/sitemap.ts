@@ -54,13 +54,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
-  // Dynamic Doctor Detail Pages
-  const doctorRoutes: MetadataRoute.Sitemap = doctorsData.map((doc) => ({
-    url: `${baseUrl}/doctors/${doc.slug}`,
-    lastModified: currentDate,
-    changeFrequency: 'weekly',
-    priority: 0.85,
-  }));
-
-  return [...staticRoutes, ...treatmentRoutes, ...doctorRoutes];
+  return [...staticRoutes, ...treatmentRoutes];
 }

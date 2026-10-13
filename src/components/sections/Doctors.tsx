@@ -159,7 +159,7 @@ export function Doctors() {
                 </div>
 
                 {/* Content */}
-                <div className="px-6 text-center flex-1 flex flex-col relative z-10 group/text mb-6">
+                <div className="px-6 pb-8 text-center flex-1 flex flex-col relative z-10 group/text">
                   <motion.h3 
                     className="text-2xl font-black text-[#0f172a] mb-2 transition-colors duration-300 group-hover:text-blue-600"
                     whileHover={{ scale: 1.05 }}
@@ -174,12 +174,6 @@ export function Doctors() {
                     {doc.specialty}
                   </p>
                 </div>
-                
-                {/* View Profile Button */}
-                <Link href={`/doctors/${doc.slug}`} className={`w-full py-5 flex items-center justify-center gap-2 font-black transition-colors ${styles.btnBg} ${styles.btnText}`}>
-                  View Profile
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
               </motion.div>
             );
           })}

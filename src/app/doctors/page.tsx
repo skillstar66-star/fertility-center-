@@ -76,7 +76,7 @@ export default function DoctorsListPage() {
                 </div>
 
                 {/* Info */}
-                <div className="text-center mb-6 space-y-1.5">
+                <div className="text-center space-y-1.5 pb-2">
                   <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">
                     {doc.name}
                   </h3>
@@ -94,15 +94,6 @@ export default function DoctorsListPage() {
                   </div>
                 </div>
               </div>
-
-              {/* View Profile Button */}
-              <Link
-                href={`/doctors/${doc.slug}`}
-                className="w-full py-3.5 rounded-2xl bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-extrabold text-sm transition-all flex items-center justify-center gap-2 group/btn"
-              >
-                <span>View Full Profile</span>
-                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </Link>
             </motion.div>
           ))}
         </div>
