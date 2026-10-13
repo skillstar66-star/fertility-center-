@@ -119,9 +119,13 @@ export function Footer() {
                 <div className="w-6 h-6 sm:w-9 sm:h-9 rounded-md sm:rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-emerald-400 shrink-0 mt-0.5 group-hover:bg-emerald-500/20 transition-colors">
                   <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
                 </div>
-                <div className="text-[10px] sm:text-sm text-slate-300 leading-tight">
-                  <p className="font-bold text-white text-[11px] sm:text-sm group-hover:text-emerald-400 transition-colors">Gandhipuram</p>
-                  <p className="text-slate-400 text-[9.5px] sm:text-xs">CBE - 641018</p>
+                <div className="text-[9.5px] sm:text-sm text-slate-300 leading-snug space-y-0.5">
+                  <p className="font-bold text-white group-hover:text-emerald-400 transition-colors">
+                    No 526, 2nd Floor, Fathima Manzil,
+                  </p>
+                  <p className="text-slate-300">Opp to Kattoor Police Station,</p>
+                  <p className="text-slate-300">Nehru St, Gandhipuram,</p>
+                  <p className="text-slate-300 font-semibold">Coimbatore - 641 018.</p>
                 </div>
               </a>
 

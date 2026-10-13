@@ -221,12 +221,25 @@ export function Treatments() {
 
                 {/* Footer Action */}
                 <div className="pt-4 border-t border-slate-200 flex items-center justify-between">
-                  <Link
-                    href="#consultation"
-                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-black ${dept.textColor} hover:underline`}
+                  <a
+                    href="#consultation-form"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      const formEl = document.getElementById("consultation-form") || document.getElementById("consultation");
+                      if (formEl) {
+                        formEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                        window.history.replaceState(null, "", "#consultation-form");
+                        window.dispatchEvent(
+                          new CustomEvent("select-consultation-concern", {
+                            detail: { concern: dept.name },
+                          })
+                        );
+                      }
+                    }}
+                    className={`inline-flex items-center gap-1.5 text-xs sm:text-sm font-black ${dept.textColor} hover:underline cursor-pointer`}
                   >
                     Book Consultation <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
+                  </a>
                   <span className="text-xs font-bold text-slate-500">
                     {dept.services.length} {dept.services.length === 1 ? 'Service' : 'Services'}
                   </span>

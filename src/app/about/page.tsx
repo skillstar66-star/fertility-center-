@@ -432,7 +432,7 @@ export default function AboutPage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/#consultation"
+                href="/#consultation-form"
                 className="w-full sm:w-auto px-9 py-4 bg-brand-primary text-white rounded-full font-bold text-base hover:bg-emerald-500 transition-all duration-300 shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Book a Consultation <ChevronRight className="w-5 h-5" />
@@ -447,7 +447,7 @@ export default function AboutPage() {
             </div>
 
             <p className="text-xs text-slate-400 mt-8">
-              No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram, Coimbatore - 641018.
+              No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram, Coimbatore - 641 018.
             </p>
           </div>
         </div>

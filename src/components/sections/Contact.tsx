@@ -41,16 +41,29 @@ export function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!formData.name.trim() || !formData.phone.trim()) return;
+
     setIsSubmitting(true);
-    // Simulate smooth animated form submission
+
+    const whatsappMessage =
+      `*🏥 CONFIDENTIAL ENQUIRY - KOVAI HEALTH CENTER*\n\n` +
+      `👤 *Full Name:* ${formData.name.trim()}\n` +
+      `📞 *Phone Number:* ${formData.phone.trim()}\n` +
+      `🩺 *Subject / Topic:* ${formData.subject.trim() || "Fertility Consultation"}\n` +
+      (formData.message.trim() ? `💬 *Message:* ${formData.message.trim()}\n\n` : "\n") +
+      `_Sent via kovaihealthcenter.com contact form_`;
+
+    const whatsappUrl = `https://wa.me/919385405040?text=${encodeURIComponent(whatsappMessage)}`;
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
       setTimeout(() => {
         setIsSubmitted(false);
         setFormData({ name: "", phone: "", subject: "Fertility Consultation", message: "" });
-      }, 4000);
-    }, 1200);
+      }, 3500);
+    }, 500);
   };
 
   const contactInfo = [
@@ -83,9 +96,14 @@ export function Contact() {
     {
       icon: MapPin,
       title: "Clinic Location",
-      details: ["No.526, 2nd Floor, Fathima Manzil", "Gandhipuram, Coimbatore - 641018"],
+      details: [
+        "No 526, 2nd Floor, Fathima Manzil,",
+        "Opp to Kattoor Police Station,",
+        "Nehru St, Gandhipuram,",
+        "Coimbatore - 641 018."
+      ],
       actionLabel: "Map",
-      href: "https://maps.google.com/?q=Kovai+Health+Center+Gandhipuram+Coimbatore",
+      href: "https://maps.google.com/?cid=10792462736540873178",
       color: "text-rose-600",
       bg: "bg-rose-50/90",
       badgeBg: "bg-rose-100/90 text-rose-700",
@@ -279,7 +297,7 @@ export function Contact() {
                     value={formData.name}
                     onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-medium text-slate-800 placeholder-slate-400 text-xs"
-                    placeholder="e.g. Anand Kumar"
+                    placeholder="Enter your name"
                   />
                 </div>
 
@@ -294,7 +312,7 @@ export function Contact() {
                     value={formData.phone}
                     onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
                     className="w-full bg-slate-50 border border-slate-200 rounded-xl px-3.5 py-2.5 outline-none focus:bg-white focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-medium text-slate-800 placeholder-slate-400 text-xs"
-                    placeholder="+91 98765 43210"
+                    placeholder="Enter your phone number"
                   />
                 </div>
               </div>

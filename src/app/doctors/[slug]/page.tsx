@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, use } from "react";
+import React, { useState, useEffect, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -35,6 +35,25 @@ interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
+const SHORT_DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const FULL_DAYS = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const SHORT_MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+function generateBookingDays(baseDate: Date) {
+  return Array.from({ length: 5 }, (_, idx) => {
+    const d = new Date(baseDate);
+    d.setDate(baseDate.getDate() + idx);
+    const dayLabel = idx === 0 ? "Today" : idx === 1 ? "Tomorrow" : FULL_DAYS[d.getDay()];
+    const dayNum = String(d.getDate()).padStart(2, "0");
+    const dateStr = `${SHORT_DAYS[d.getDay()]}, ${dayNum} ${SHORT_MONTHS[d.getMonth()]}`;
+    return {
+      day: dayLabel,
+      date: dateStr,
+      available: true,
+    };
+  });
+}
+
 export default function DoctorProfilePage({ params }: PageProps) {
   const resolvedParams = use(params);
   const doctor = doctorsData.find((d) => d.slug === resolvedParams.slug);
@@ -53,14 +72,11 @@ export default function DoctorProfilePage({ params }: PageProps) {
   const [patientName, setPatientName] = useState("");
   const [patientPhone, setPatientPhone] = useState("");
   const [activeTab, setActiveTab] = useState<"all" | "about" | "qualifications" | "experience" | "services" | "reviews">("all");
+  const [bookingDays, setBookingDays] = useState(() => generateBookingDays(new Date()));
 
-  const bookingDays = [
-    { day: "Today", date: "Wed, 29 Sep", available: true },
-    { day: "Tomorrow", date: "Thu, 30 Sep", available: true },
-    { day: "Friday", date: "Fri, 01 Oct", available: true },
-    { day: "Saturday", date: "Sat, 02 Oct", available: true },
-    { day: "Monday", date: "Mon, 04 Oct", available: true }
-  ];
+  useEffect(() => {
+    setBookingDays(generateBookingDays(new Date()));
+  }, []);
 
   const timeSlots = [
     { time: "10:00 AM - 10:30 AM", period: "Morning", badge: "Fast Filling" },
@@ -93,7 +109,25 @@ export default function DoctorProfilePage({ params }: PageProps) {
 
   const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!patientName.trim() || !patientPhone.trim()) return;
+
+    const selectedDateLabel = `${bookingDays[selectedDayIndex]?.date} (${bookingDays[selectedDayIndex]?.day})`;
+    const modeLabel = consultationType === "clinic" ? "In-Clinic (Gandhipuram)" : "Phone / Video Consultation";
+
+    const whatsappMessage =
+      `*🏥 DOCTOR APPOINTMENT REQUEST - KOVAI HEALTH CENTER*\n\n` +
+      `👨‍⚕️ *Doctor:* ${doctor.name} (${doctor.qualification})\n` +
+      `📅 *Preferred Date:* ${selectedDateLabel}\n` +
+      `⏰ *Time Slot:* ${selectedTime}\n` +
+      `🏥 *Consultation Mode:* ${modeLabel}\n` +
+      `👤 *Patient Name:* ${patientName.trim()}\n` +
+      `📞 *Phone Number:* ${patientPhone.trim()}\n\n` +
+      `_Sent via kovaihealthcenter.com doctor appointment booking_`;
+
+    const whatsappUrl = `https://wa.me/919385405040?text=${encodeURIComponent(whatsappMessage)}`;
+
     setBookingStep("confirmed");
+    window.open(whatsappUrl, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -483,7 +517,7 @@ export default function DoctorProfilePage({ params }: PageProps) {
                   <div className="text-xs sm:text-sm text-slate-600 space-y-2.5 font-normal">
                     <div className="font-extrabold text-slate-900 text-base">Kovai Health Center</div>
                     <p className="leading-relaxed">
-                      No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram, Coimbatore - 641018.
+                      No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram, Coimbatore - 641 018.
                     </p>
                     
                     <div className="pt-1">
@@ -523,16 +557,6 @@ export default function DoctorProfilePage({ params }: PageProps) {
                         <div className="font-semibold text-slate-900">kovaihealthcenter@gmail.com</div>
                         <span className="text-xs text-slate-500">Official Support</span>
                       </div>
-                    </a>
-
-                    <a 
-                      href="https://maps.google.com/?q=Gandhipuram,Coimbatore" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 font-extrabold text-xs pt-1 px-3 py-1.5 rounded-xl bg-blue-50/80 hover:bg-blue-100 transition-all"
-                    >
-                      <MapPin className="w-3.5 h-3.5" />
-                      <span>Get Directions on Google Maps →</span>
                     </a>
                   </div>
                 </div>
@@ -771,7 +795,7 @@ export default function DoctorProfilePage({ params }: PageProps) {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Ramesh Kumar"
+                      placeholder="Enter your full name"
                       value={patientName}
                       onChange={(e) => setPatientName(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"
@@ -783,7 +807,7 @@ export default function DoctorProfilePage({ params }: PageProps) {
                     <input
                       type="tel"
                       required
-                      placeholder="e.g. 9876543210"
+                      placeholder="Enter your phone number"
                       value={patientPhone}
                       onChange={(e) => setPatientPhone(e.target.value)}
                       className="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600"

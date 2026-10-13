@@ -593,7 +593,7 @@ export default function AwardsPage() {
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="/#consultation"
+                href="/#consultation-form"
                 className="w-full sm:w-auto px-10 py-4 bg-white text-emerald-950 rounded-full font-extrabold text-base hover:bg-amber-300 transition-all duration-300 shadow-xl hover:-translate-y-0.5 flex items-center justify-center gap-2"
               >
                 Book a Consultation <ChevronRight className="w-5 h-5" />
@@ -608,7 +608,7 @@ export default function AwardsPage() {
             </div>
 
             <p className="text-xs text-emerald-200/70 mt-8 font-medium">
-              📍 No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram, Coimbatore - 641018.
+              📍 No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram, Coimbatore - 641 018.
             </p>
           </div>
         </div>

@@ -139,13 +139,22 @@ export function Hero() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="flex flex-col sm:flex-row gap-2.5 sm:gap-3.5 mb-2 sm:mb-6 w-full sm:w-auto z-10 relative"
             >
-              <Link 
-                href="#consultation" 
-                className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-white bg-[#0f172a] rounded-full hover:bg-brand-primary transition-all duration-300 shadow-lg hover:shadow-brand-primary/20"
+              <a 
+                href="#consultation-form" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  const formEl = document.getElementById("consultation-form") || document.getElementById("consultation");
+                  if (formEl) {
+                    formEl.scrollIntoView({ behavior: "smooth", block: "center" });
+                    window.history.replaceState(null, "", "#consultation-form");
+                    window.dispatchEvent(new CustomEvent("select-consultation-concern"));
+                  }
+                }}
+                className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-white bg-[#0f172a] rounded-full hover:bg-brand-primary transition-all duration-300 shadow-lg hover:shadow-brand-primary/20 cursor-pointer"
               >
                 Book a Confidential Consultation
                 <ArrowRight className="w-4 h-4" />
-              </Link>
+              </a>
               <a 
                 href="tel:+919385405040" 
                 className="inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-bold text-brand-dark bg-white/95 backdrop-blur-md rounded-full border border-slate-200 hover:border-brand-primary hover:text-brand-primary transition-all duration-300 shadow-xs"

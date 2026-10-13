@@ -84,13 +84,17 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center gap-3.5">
-                <Link
-                  href="#consultation"
+                <a
+                  href={`https://wa.me/919385405040?text=${encodeURIComponent(
+                    `*🏥 CONFIDENTIAL CONSULTATION REQUEST - KOVAI HEALTH CENTER*\n\n🩺 *Concern / Treatment:* ${displayTitle}\n\nHello Doctor, I would like to book a confidential consultation regarding *${displayTitle}*.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-[#0f172a] hover:bg-brand-primary text-white rounded-full font-extrabold text-sm transition-all duration-300 shadow-md hover:shadow-xl hover:-translate-y-0.5"
                 >
                   <span>Book a Confidential Consultation</span>
                   <ChevronRight className="w-4 h-4" />
-                </Link>
+                </a>
                 <a
                   href="tel:+919385405040"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white text-slate-700 border border-slate-200 hover:border-brand-primary hover:text-brand-primary rounded-full font-bold text-sm transition-all duration-300 shadow-2xs"
@@ -369,6 +373,17 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
+                href={`https://wa.me/919385405040?text=${encodeURIComponent(
+                  `*🏥 CONFIDENTIAL CONSULTATION REQUEST - KOVAI HEALTH CENTER*\n\n🩺 *Concern / Treatment:* ${displayTitle}\n\nHello Doctor, I would like to book a confidential consultation regarding *${displayTitle}*.`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full sm:w-auto px-8 py-4 bg-emerald-500 text-white rounded-full font-bold text-sm sm:text-base hover:bg-emerald-600 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 hover:-translate-y-0.5"
+              >
+                <MessageCircle className="w-4 h-4" />
+                Book on WhatsApp
+              </a>
+              <a
                 href="tel:+919385405040"
                 className="w-full sm:w-auto px-8 py-4 bg-brand-primary text-white rounded-full font-bold text-sm sm:text-base hover:bg-emerald-500 transition-all duration-300 shadow-lg flex items-center justify-center gap-2 hover:-translate-y-0.5"
               >
@@ -384,7 +399,7 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
             </div>
 
             <p className="text-xs text-slate-400 mt-6">
-              No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram, Coimbatore - 641018.
+              No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram, Coimbatore - 641 018.
             </p>
           </div>
         </div>

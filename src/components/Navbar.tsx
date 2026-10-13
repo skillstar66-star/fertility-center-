@@ -163,7 +163,7 @@ export function Navbar() {
             {/* Actions: Desktop CTA + Mobile Toggle Button */}
             <div className="flex items-center gap-2.5 sm:gap-4">
               <Link
-                href="/#consultation"
+                href="/#consultation-form"
                 className="hidden md:inline-flex items-center justify-center px-5 sm:px-6 py-2.5 text-xs sm:text-sm font-black text-white bg-brand-dark hover:bg-brand-primary rounded-full transition-all duration-300 hover:shadow-lg hover:shadow-brand-primary/20 transform hover:-translate-y-0.5 shadow-sm"
               >
                 Book Consultation
@@ -267,7 +267,7 @@ export function Navbar() {
                 {/* Mobile Quick Action Buttons */}
                 <div className="mt-5 pt-4 border-t-2 border-slate-100 flex flex-col gap-2.5">
                   <Link
-                    href="/#consultation"
+                    href="/#consultation-form"
                     onClick={() => setIsOpen(false)}
                     className="w-full py-3.5 px-4 rounded-2xl bg-brand-primary hover:bg-emerald-700 text-white font-black text-center text-sm shadow-md flex items-center justify-center gap-2 transition-colors"
                   >

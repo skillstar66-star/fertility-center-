@@ -1,11 +1,65 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { ShieldCheck, Lock, Users, HeartHandshake, MessageSquarePlus, ClipboardList, User, MessageSquare, Clock, Headphones, Shield } from "@/components/Icons";
+import { ShieldCheck, Lock, Users, HeartHandshake, MessageSquarePlus, User, MessageSquare, Clock, Headphones, Shield, CheckCircle2 } from "@/components/Icons";
 
 export function Consultation() {
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    concern: "",
+    message: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isHighlighted, setIsHighlighted] = useState(false);
+  const nameInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const handleSelectConcern = (e: Event) => {
+      const customEvent = e as CustomEvent<{ concern?: string }>;
+      if (customEvent.detail?.concern) {
+        setFormData((prev) => ({ ...prev, concern: customEvent.detail.concern! }));
+      }
+      setIsHighlighted(true);
+      setTimeout(() => {
+        nameInputRef.current?.focus({ preventScroll: true });
+      }, 650);
+      setTimeout(() => {
+        setIsHighlighted(false);
+      }, 2000);
+    };
+
+    window.addEventListener("select-consultation-concern", handleSelectConcern);
+    return () => window.removeEventListener("select-consultation-concern", handleSelectConcern);
+  }, []);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData.name.trim() || !formData.phone.trim()) return;
+
+    const whatsappMessage =
+      `*🏥 CONFIDENTIAL CONSULTATION REQUEST - KOVAI HEALTH CENTER*\n\n` +
+      `👤 *Full Name:* ${formData.name.trim()}\n` +
+      `📞 *Phone Number:* ${formData.phone.trim()}\n` +
+      `🩺 *Concern / Department:* ${formData.concern || "General Consultation"}\n` +
+      (formData.message.trim() ? `💬 *Message:* ${formData.message.trim()}\n\n` : "\n") +
+      `_Sent via kovaihealthcenter.com consultation form_`;
+
+    const whatsappUrl = `https://wa.me/919385405040?text=${encodeURIComponent(whatsappMessage)}`;
+    setIsSubmitted(true);
+
+    setTimeout(() => {
+      window.open(whatsappUrl, "_blank", "noopener,noreferrer");
+      setTimeout(() => {
+        setIsSubmitted(false);
+        setFormData({ name: "", phone: "", concern: "", message: "" });
+      }, 3000);
+    }, 500);
+  };
+
   return (
-    <section id="consultation" className="py-24 relative overflow-hidden bg-[#f4f7fc]">
+    <section id="consultation" className="py-24 scroll-mt-20 relative overflow-hidden bg-[#f4f7fc]">
       {/* Background patterns */}
       <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
         <div className="absolute top-10 left-10 w-32 h-32" style={{ backgroundImage: 'radial-gradient(#94a3b8 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
@@ -98,11 +152,14 @@ export function Consultation() {
 
           {/* Right Column (Form) */}
           <motion.div 
+            id="consultation-form"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="bg-white rounded-[32px] p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] border-2 border-slate-100 relative"
+            className={`bg-white rounded-[32px] p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.08)] border-2 transition-all duration-500 relative scroll-mt-28 ${
+              isHighlighted ? "border-blue-500 ring-4 ring-blue-500/20" : "border-slate-100"
+            }`}
           >
             <div className="flex items-center gap-5 mb-8">
               <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center text-white shrink-0 shadow-md shadow-blue-500/20">
@@ -110,11 +167,11 @@ export function Consultation() {
               </div>
               <div>
                 <h3 className="text-xl sm:text-2xl font-black text-[#0f172a] mb-1">Request Confidential Consultation</h3>
-                <p className="text-slate-700 font-bold text-sm">Fill in your details and we'll get back to you.</p>
+                <p className="text-slate-700 font-bold text-sm">Fill in your details and we&apos;ll get back to you.</p>
               </div>
             </div>
 
-            <form className="flex flex-col gap-6">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="flex flex-col gap-6">
                 
                 <div className="flex gap-3 sm:gap-4">
@@ -124,8 +181,17 @@ export function Consultation() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5 flex-1">
-                    <label className="text-sm font-black text-[#0f172a]">Name</label>
-                    <input type="text" className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-sm font-bold text-slate-900 placeholder:text-slate-400" placeholder="Your full name" />
+                    <label htmlFor="consultation-name" className="text-sm font-black text-[#0f172a]">Name *</label>
+                    <input
+                      ref={nameInputRef}
+                      id="consultation-name"
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-sm font-bold text-slate-900 placeholder:text-slate-400"
+                      placeholder="Enter your name"
+                    />
                   </div>
                 </div>
 
@@ -136,8 +202,16 @@ export function Consultation() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5 flex-1">
-                    <label className="text-sm font-black text-[#0f172a]">Phone Number</label>
-                    <input type="tel" className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-sm font-bold text-slate-900 placeholder:text-slate-400" placeholder="+91 12345 67890" />
+                    <label htmlFor="consultation-phone" className="text-sm font-black text-[#0f172a]">Phone Number *</label>
+                    <input
+                      id="consultation-phone"
+                      type="tel"
+                      required
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-sm font-bold text-slate-900 placeholder:text-slate-400"
+                      placeholder="Enter your phone number"
+                    />
                   </div>
                 </div>
 
@@ -148,11 +222,22 @@ export function Consultation() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5 flex-1">
-                    <label className="text-sm font-black text-[#0f172a]">Select Concern</label>
-                    <select className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-slate-900 font-bold text-sm appearance-none cursor-pointer">
+                    <label htmlFor="consultation-concern" className="text-sm font-black text-[#0f172a]">Select Concern</label>
+                    <select
+                      id="consultation-concern"
+                      value={formData.concern}
+                      onChange={(e) => setFormData({ ...formData, concern: e.target.value })}
+                      className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-slate-900 font-bold text-sm appearance-none cursor-pointer"
+                    >
                       <option value="">Select an option</option>
-                      <option value="Men's Wellness">Men's Wellness</option>
-                      <option value="Women's Wellness">Women's Wellness</option>
+                      <option value="Sexology & Sexual Wellness">Sexology & Sexual Wellness</option>
+                      <option value="Male Fertility">Male Fertility</option>
+                      <option value="Female Fertility">Female Fertility</option>
+                      <option value="Male Reproductive Health">Male Reproductive Health</option>
+                      <option value="Female Reproductive Health">Female Reproductive Health</option>
+                      <option value="Pre-Marital & Couple Counselling">Pre-Marital & Couple Counselling</option>
+                      <option value="Men's Wellness">Men&apos;s Wellness</option>
+                      <option value="Women's Wellness">Women&apos;s Wellness</option>
                       <option value="General Consultation">General Consultation</option>
                     </select>
                   </div>
@@ -165,8 +250,15 @@ export function Consultation() {
                     </div>
                   </div>
                   <div className="flex flex-col gap-1.5 flex-1">
-                    <label className="text-sm font-black text-[#0f172a]">Message (Optional)</label>
-                    <textarea rows={3} className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-sm font-bold text-slate-900 placeholder:text-slate-400 resize-none" placeholder="How can we help you?" />
+                    <label htmlFor="consultation-message" className="text-sm font-black text-[#0f172a]">Message (Optional)</label>
+                    <textarea
+                      id="consultation-message"
+                      rows={3}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="px-4 py-3 sm:py-3.5 rounded-xl border-2 border-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all bg-white text-sm font-bold text-slate-900 placeholder:text-slate-400 resize-none"
+                      placeholder="How can we help you?"
+                    />
                   </div>
                 </div>
 
@@ -185,7 +277,7 @@ export function Consultation() {
                   <Clock className="w-5 h-5 text-blue-700 shrink-0" />
                   <div>
                     <h4 className="text-xs font-black text-blue-900">Quick Response</h4>
-                    <p className="text-[10px] text-slate-700 font-bold leading-tight">We'll get back to you shortly</p>
+                    <p className="text-[10px] text-slate-700 font-bold leading-tight">We&apos;ll get back to you shortly</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
@@ -197,9 +289,26 @@ export function Consultation() {
                 </div>
               </div>
 
-              <button type="button" className="w-full py-4 bg-[#2563eb] hover:bg-blue-700 text-white rounded-xl font-black transition-colors shadow-lg shadow-blue-500/25 flex items-center justify-center gap-2 text-base">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
-                Submit Request
+              <button
+                type="submit"
+                disabled={isSubmitted}
+                className={`w-full py-4 rounded-xl font-black transition-all shadow-lg flex items-center justify-center gap-2 text-base cursor-pointer ${
+                  isSubmitted
+                    ? "bg-emerald-600 text-white shadow-emerald-500/25"
+                    : "bg-[#2563eb] hover:bg-blue-700 text-white shadow-blue-500/25"
+                }`}
+              >
+                {isSubmitted ? (
+                  <>
+                    <CheckCircle2 className="w-5 h-5 text-white animate-bounce" />
+                    Request Sent! Opening WhatsApp...
+                  </>
+                ) : (
+                  <>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                    Submit Request
+                  </>
+                )}
               </button>
               
               <div className="flex sm:hidden items-center justify-between border-2 border-slate-200 rounded-xl p-4 bg-white shadow-sm mt-2">
@@ -225,3 +334,4 @@ export function Consultation() {
     </section>
   );
 }
+
