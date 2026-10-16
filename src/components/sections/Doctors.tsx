@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Sparkles, Calendar, ShieldCheck, Lock, Users, HeartHandshake, ArrowRight } from "@/components/Icons";
 import Image from "next/image";
-import Link from "next/link";
 
 export function Doctors() {
   const doctors = [
@@ -159,7 +158,7 @@ export function Doctors() {
                 </div>
 
                 {/* Content */}
-                <div className="px-6 pb-8 text-center flex-1 flex flex-col relative z-10 group/text">
+                <div className="px-6 text-center flex-1 flex flex-col relative z-10 group/text pb-8">
                   <motion.h3 
                     className="text-2xl font-black text-[#0f172a] mb-2 transition-colors duration-300 group-hover:text-blue-600"
                     whileHover={{ scale: 1.05 }}

@@ -11,7 +11,6 @@ import {
   Star,
   Briefcase,
   ChevronRight,
-  ArrowRight,
   Sparkles
 } from "@/components/Icons";
 
@@ -76,7 +75,7 @@ export default function DoctorsListPage() {
                 </div>
 
                 {/* Info */}
-                <div className="text-center space-y-1.5 pb-2">
+                <div className="text-center mb-6 space-y-1.5">
                   <h3 className="text-2xl font-black text-slate-900 group-hover:text-blue-600 transition-colors">
                     {doc.name}
                   </h3>
