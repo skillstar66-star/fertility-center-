@@ -108,7 +108,7 @@ export default function AboutPage() {
     },
     {
       q: "Where is Kovai Health Center located?",
-      a: "Our center is centrally located in Gandhipuram, Coimbatore at: No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram, Coimbatore - 641018."
+      a: "Our center is centrally located in Gandhipuram, Coimbatore at: No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram, Coimbatore - 641 018."
     }
   ];
 

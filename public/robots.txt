@@ -1,14 +1,23 @@
+# robots.txt for https://kovaihealthcenter.com
+
 User-agent: *
 Allow: /
 
-# AI & LLM Search Crawlers (AEO / GEO)
+# Search Engine Crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: bingbot
+Allow: /
+
+# AI & LLM Search Crawlers (GEO / AEO)
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
-Allow: /
-
-User-agent: gemini-bot
 Allow: /
 
 User-agent: PerplexityBot
@@ -32,5 +41,5 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-# Sitemap
+# XML Sitemap for Google Search Console
 Sitemap: https://kovaihealthcenter.com/sitemap.xml

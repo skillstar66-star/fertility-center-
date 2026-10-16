@@ -1,6 +1,5 @@
 import { MetadataRoute } from 'next';
 import { treatmentsData } from '@/data/treatments';
-import { doctorsData } from '@/data/doctors';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://kovaihealthcenter.com';
@@ -33,16 +32,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
-      url: `${baseUrl}/videos`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
       url: `${baseUrl}/contact`,
       lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.9,
     },
   ];
 

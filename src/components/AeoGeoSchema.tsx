@@ -26,7 +26,7 @@ export function AeoGeoSchema() {
         "paymentAccepted": "Cash, UPI, Credit Card, Debit Card, Net Banking",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram",
+          "streetAddress": "No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram",
           "addressLocality": "Coimbatore",
           "addressRegion": "Tamil Nadu",
           "postalCode": "641018",
@@ -150,7 +150,7 @@ export function AeoGeoSchema() {
             "name": "What are the contact details and address of Kovai Health Center?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Kovai Health Center is located at No.526, 2nd Floor, Fathima Manzil, Opp. Arasu Medicals, Nehru Street, Gandhipuram, Coimbatore - 641018. You can call +91 93854 05040 or +91 83005 91849 to book a private consultation."
+              "text": "Kovai Health Center is located at No 526, 2nd Floor, Fathima Manzil, Opp to Kattoor Police Station, Nehru St, Gandhipuram, Coimbatore - 641 018. You can call +91 93854 05040 or +91 83005 91849 to book a private consultation."
             }
           },
           {
