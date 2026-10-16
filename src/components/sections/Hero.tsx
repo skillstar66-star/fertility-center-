@@ -11,6 +11,8 @@ const slides = [
   {
     image: "/image copy.png",
     imagePosition: "object-[80%_center] sm:object-center",
+    alt: "Kovai Health Center - 30 Years of Trusted Sexual Health & Fertility Care in Coimbatore",
+    imageTitle: "Kovai Health Center - Best Fertility Clinic Coimbatore",
     tag: "Experience & Expertise",
     titlePrefix: "30 Years of Trusted Care in ",
     titleHighlight: "Sexual Health & Fertility",
@@ -19,6 +21,8 @@ const slides = [
   {
     image: "/image copy 5.png",
     imagePosition: "object-[80%_center] sm:object-center",
+    alt: "Personalized Ayurvedic Fertility & Natural Infertility Care at Kovai Health Center",
+    imageTitle: "Personalized Fertility Guidance Coimbatore",
     tag: "Understanding & Personalised Care",
     titlePrefix: "Personalized Care That Begins With ",
     titleHighlight: "Understanding Your Concern",
@@ -27,6 +31,8 @@ const slides = [
   {
     image: "/image copy 6.png",
     imagePosition: "object-[80%_center] sm:object-center",
+    alt: "Compassionate Guidance for Fertility, Sexual Wellness & Intimacy in Gandhipuram Coimbatore",
+    imageTitle: "Compassionate Fertility & Wellbeing Clinic",
     tag: "Compassion & Patient Trust",
     titlePrefix: "Compassionate Guidance for Your ",
     titleHighlight: "Health, Fertility & Wellbeing",
@@ -59,7 +65,8 @@ export function Hero() {
           >
             <Image 
               src={slides[current].image}
-              alt="Hero Background"
+              alt={slides[current].alt}
+              title={slides[current].imageTitle}
               fill
               className={cn(
                 "object-cover transition-transform duration-[10s] scale-105 brightness-[1.08] contrast-[1.05] saturate-[1.08]", 

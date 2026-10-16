@@ -148,7 +148,8 @@ export function Preloader() {
               >
                 <Image
                   src="/logo.png?v=2"
-                  alt="Kovai Health Center Logo"
+                  alt="Kovai Health Center Logo - Ayurvedic Fertility & Sexual Wellness Coimbatore"
+                  title="Kovai Health Center Coimbatore"
                   fill
                   className="object-contain"
                   unoptimized

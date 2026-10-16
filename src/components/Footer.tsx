@@ -16,7 +16,8 @@ export function Footer() {
               <div className="bg-white/95 rounded-2xl px-3.5 py-2 inline-flex items-center shadow-md border border-white/20 group-hover:bg-white group-hover:scale-105 transition-all duration-300">
                 <Image 
                   src="/logo.png?v=2" 
-                  alt="Kovai Health Center Logo" 
+                  alt="Kovai Health Center - Trusted Infertility Hospital in Gandhipuram Coimbatore" 
+                  title="Kovai Health Center Coimbatore"
                   width={180} 
                   height={50} 
                   className="h-8 sm:h-10 w-auto object-contain"

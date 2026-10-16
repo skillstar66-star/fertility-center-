@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -19,6 +20,48 @@ import {
   HelpCircle
 } from "@/components/Icons";
 import { treatmentsData } from '@/data/treatments';
+import { getTreatmentSeo } from '@/data/treatmentSeo';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
+  const seo = getTreatmentSeo(slug);
+  const treatment = treatmentsData[slug];
+  const canonicalUrl = `https://kovaihealthcenter.com/treatments/${slug}`;
+  const imageUrl = treatment?.imageSrc
+    ? `https://kovaihealthcenter.com${treatment.imageSrc}`
+    : `https://kovaihealthcenter.com/about-image-1.png`;
+
+  return {
+    title: seo.title,
+    description: seo.description,
+    keywords: seo.keywords,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: canonicalUrl,
+      type: 'article',
+      siteName: 'Kovai Health Center',
+      images: [
+        {
+          url: imageUrl,
+          width: 800,
+          height: 600,
+          alt: `${seo.title} - Kovai Health Center Coimbatore`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.title,
+      description: seo.description,
+      images: [imageUrl],
+    },
+  };
+}
 
 export default async function TreatmentPage({ params }: { params: Promise<{ slug: string }> }) {
   const resolvedParams = await params;
@@ -110,7 +153,8 @@ export default async function TreatmentPage({ params }: { params: Promise<{ slug
               <div className="relative w-full h-full">
                 <Image
                   src={treatment.imageSrc}
-                  alt={displayTitle}
+                  alt={`${displayTitle} Ayurvedic Treatment at Kovai Health Center Coimbatore`}
+                  title={`${displayTitle} - Natural Fertility Care Coimbatore`}
                   fill
                   priority
                   className="object-contain object-center drop-shadow-2xl hover:scale-103 transition-transform duration-500"

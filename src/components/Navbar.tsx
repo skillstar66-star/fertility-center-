@@ -117,7 +117,8 @@ export function Navbar() {
             >
               <Image 
                 src="/logo.png?v=2" 
-                alt="Kovai Health Center Logo" 
+                alt="Kovai Health Center - Best Fertility & Sexual Wellness Clinic in Coimbatore" 
+                title="Kovai Health Center - Ayurvedic Fertility & Sexual Wellness Clinic"
                 width={180} 
                 height={50} 
                 className="object-contain h-8 sm:h-11 w-auto"

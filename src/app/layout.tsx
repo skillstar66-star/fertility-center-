@@ -17,6 +17,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kovaihealthcenter.com"),
+  alternates: {
+    canonical: "https://kovaihealthcenter.com",
+  },
   title: "Best Fertility Center in Coimbatore | Kovai Health Center",
   description: "Trusted fertility & sexual wellness care in Coimbatore with 30+ yrs experience. Expert natural Ayurvedic treatments for male & female fertility. Book today!",
   keywords: [
@@ -75,6 +79,20 @@ export const metadata: Metadata = {
     siteName: "Kovai Health Center",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: "https://kovaihealthcenter.com/about-image-1.png",
+        width: 800,
+        height: 800,
+        alt: "Kovai Health Center - Best Fertility Clinic & Doctors in Coimbatore",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Best Fertility Center in Coimbatore | Kovai Health Center",
+    description: "Trusted fertility & sexual wellness care in Coimbatore with 30+ yrs experience. Expert natural Ayurvedic treatments for male & female fertility.",
+    images: ["https://kovaihealthcenter.com/about-image-1.png"],
   },
   icons: {
     icon: [

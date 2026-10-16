@@ -149,7 +149,8 @@ export function Doctors() {
                     <div className="w-36 h-36 rounded-full overflow-hidden rotate-[15deg]">
                       <Image 
                         src={doc.img} 
-                        alt={doc.name}
+                        alt={`${doc.name} - ${doc.specialty} Specialist at Kovai Health Center Coimbatore`}
+                        title={`${doc.name} (${doc.qualification}) - ${doc.specialty}`}
                         fill
                         className="object-cover"
                       />

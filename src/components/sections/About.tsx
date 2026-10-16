@@ -83,7 +83,8 @@ export function About() {
             <div className="relative w-full max-w-[550px] h-auto rounded-[32px] overflow-hidden shadow-2xl border border-slate-100 group bg-slate-50">
               <Image 
                 src="/about-image-1.png" 
-                alt="About Kovai Health Center" 
+                alt="Kovai Health Center Clinic & Doctors - 30 Years Experience in Ayurvedic Fertility Care Coimbatore" 
+                title="Kovai Health Center - Trusted Infertility Hospital in Coimbatore"
                 width={800} 
                 height={800} 
                 className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105 brightness-[1.06] contrast-[1.03] saturate-[1.05]"
