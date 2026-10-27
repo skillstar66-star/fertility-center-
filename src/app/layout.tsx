@@ -24,54 +24,9 @@ export const metadata: Metadata = {
   title: "Best Fertility Center in Coimbatore | Kovai Health Center",
   description: "Trusted fertility & sexual wellness care in Coimbatore with 30+ yrs experience. Expert natural Ayurvedic treatments for male & female fertility. Book today!",
   keywords: [
-    // Core & Location Keywords
-    "Best Fertility Center in Coimbatore",
-    "Best Infertility Hospital in Coimbatore",
-    "Kovai Health Center",
-    "Fertility Clinic Coimbatore",
-    "Ayurvedic Fertility Treatment Coimbatore",
-    "Natural Infertility Care Coimbatore",
-    "Top Fertility Specialist in Coimbatore",
-    "Dr Jaleel Kovai Health Center",
-    
-    // Male Infertility & Sexual Health Keywords
-    "Male Fertility Treatment Coimbatore",
-    "Low Sperm Count Treatment in Coimbatore",
-    "Oligospermia Natural Cure",
-    "Azoospermia Treatment Coimbatore",
-    "Sperm Motility Improvement Medicine",
-    "Erectile Dysfunction Treatment Coimbatore",
-    "Premature Ejaculation Specialist Coimbatore",
-    "Male Low Libido Treatment",
-    "Epididymal Cyst Treatment Coimbatore",
-    "Varicocele Ayurvedic Treatment",
-    "Male Pre-Marital Fitness Checkup Coimbatore",
-    "Male Preconception Health Care",
-
-    // Female Fertility & Gynaecology Keywords
-    "Female Fertility Treatment Coimbatore",
-    "PCOS Treatment in Coimbatore",
-    "PCOD Natural Ayurvedic Treatment",
-    "Ovarian Cyst Treatment Without Surgery",
-    "Uterine Fibroids Natural Medicine",
-    "Female Hormonal Imbalance Treatment",
-    "Irregular Periods Ayurvedic Medicine",
-    "Fallopian Tube Blockage Natural Treatment",
-    "Female Low Libido Treatment",
-    "Female Preconception Health Care Coimbatore",
-    "Premarital Fitness in Women",
-
-    // Counseling & Special Care
-    "Fertility Counseling Coimbatore",
-    "Couple Counseling Coimbatore",
-    "Pre-Marital Counseling Coimbatore",
-    "Sexual Wellness Clinic Coimbatore",
-
-    // Regional & Tamil transliterated search queries
-    "Infertility Treatment Near Me",
-    "Best Doctor for Childless Couples in Coimbatore",
-    "Kovai Karutharippu Maiyam",
-    "Kovai Health Centre Ramanathapuram"
+    "best fertility center in coimbatore",
+    "best infertility hospital in coimbatore",
+    "best infertility clinic in coimbatore",
   ],
   openGraph: {
     title: "Best Fertility Center in Coimbatore | Kovai Health Center",
@@ -117,7 +72,7 @@ export default function RootLayout({
       <head>
         <AeoGeoSchema />
       </head>
-      <body 
+      <body
         className={`${inter.variable} font-sans antialiased bg-mesh min-h-screen flex flex-col relative`}
         suppressHydrationWarning
       >
@@ -128,7 +83,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        
+
         <ConsultationModal />
         <FloatingWhatsApp />
         <BottomNav />
